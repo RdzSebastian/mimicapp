@@ -1,12 +1,15 @@
 package com.stoniaport.mimicapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.CountDownTimer;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -59,9 +62,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void reseteaContador(View Vista) {
+        AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
+        dialogo1.setTitle("Importante");
+        dialogo1.setMessage("¿ Quiere reiniciar el juego? ?");
+        dialogo1.setCancelable(false);
+        dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo1, int id) {
+                aceptar();
+            }
+        });
+        dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo1, int id) {
+                cancelar();
+            }
+        });
+        dialogo1.show();
+
+    }
+
+    public void aceptar() {
         equipoActual.setPuntos(0);
+        cambioDeEquipo();
+        equipoActual.setPuntos(0);
+        equipoActual = equipo1;
+
         mostrarResultado();
     }
+
+    public void cancelar() {
+        finish();
+    }
+
 
 
     public void mostrarResultado() {
