@@ -6,24 +6,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class pelicula extends AppCompatActivity {
 
-    Button siguiente;
+    Button volver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_pelicula);
 
+        volver=findViewById(R.id.Volver);
 
-        siguiente=(Button) findViewById(R.id.pelicula);
-
-        siguiente.setOnClickListener(new View.OnClickListener() {
+        volver.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-                Intent siguiente = new Intent(MainActivity.this, pelicula.class);
-                startActivity(siguiente);
+                Intent volver = new Intent(pelicula.this, MainActivity.class);
+                startActivity(volver);
             }
         });
     }
