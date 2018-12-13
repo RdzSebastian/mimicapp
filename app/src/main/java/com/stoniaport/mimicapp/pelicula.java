@@ -15,15 +15,10 @@ public class pelicula extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pelicula);
 
-        volver=findViewById(R.id.Volver);
+    }
 
-        volver.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                Intent volver = new Intent(pelicula.this, MainActivity.class);
-                startActivity(volver);
-            }
-        });
+    public void volver(View v) {
+        Intent volver = new Intent(pelicula.this, MainActivity.class);
+        startActivity(volver);
     }
 }
