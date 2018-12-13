@@ -13,7 +13,9 @@ public class MainActivity extends AppCompatActivity {
     int contador;
     int numero=1;
 
-    Equipo equipoActual = new Equipo("equipo1","0");
+    Equipo equipo1 = new Equipo("Equipo 1",1,0);
+    Equipo equipo2 = new Equipo("Equipo 2",2,0);
+    Equipo equipoActual = equipo1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,19 +53,19 @@ public class MainActivity extends AppCompatActivity {
         text.setText("" + contador);
     }
 
+
+
     public void cambioDeEquipo(View Vista){
-        equipoActual.setNombre("equipo2");
-        cambiarNombreEquipo();
 
-    }
-
-    public void cambiarNombreEquipo(){
-    TextView text = (TextView)findViewById(R.id.nombre);
+        TextView text = (TextView)findViewById(R.id.nombre);
         numero++;
-        if(numero==3){
-            numero=1;
+        if(numero==2 ){
+            equipoActual = equipo2;
         }
-        text.setText("Equipo"+numero);
-
+        else {
+            numero=1;
+            equipoActual=equipo1;
+        }
+        text.setText(equipoActual.getNombre());
     }
 }
