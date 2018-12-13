@@ -11,12 +11,16 @@ public class MainActivity extends AppCompatActivity {
 
     Button siguiente;
     int contador;
+    int numero=1;
+
+    Equipo equipoActual = new Equipo("equipo1","0");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         contador=0;
+        mostrarResultado();
 
     }
 
@@ -42,8 +46,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void mostrarResultado(){
 
+
         TextView text = (TextView)findViewById(R.id.puntos);
         text.setText("" + contador);
     }
 
+    public void cambioDeEquipo(View Vista){
+        equipoActual.setNombre("equipo2");
+        cambiarNombreEquipo();
+
+    }
+
+    public void cambiarNombreEquipo(){
+    TextView text = (TextView)findViewById(R.id.nombre);
+        numero++;
+        if(numero==3){
+            numero=1;
+        }
+        text.setText("Equipo"+numero);
+
+    }
 }
