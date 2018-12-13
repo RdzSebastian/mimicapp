@@ -2,7 +2,6 @@ package com.stoniaport.mimicapp;
 
 import android.content.Intent;
 import android.os.CountDownTimer;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -50,14 +49,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void incrementaContador(View Vista) {
-        puntos = (equipoActual.getPuntos()) + 1;
-        equipoActual.setPuntos(puntos);
+        equipoActual.incrementa();
         mostrarResultado();
     }
 
     public void decrementaContador(View Vista) {
-        puntos = (equipoActual.getPuntos()) - 1;
-        equipoActual.setPuntos(puntos);
+        equipoActual.decrementa();
         mostrarResultado();
     }
 
@@ -70,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
     public void mostrarResultado() {
         TextView text = findViewById(R.id.puntos);
         puntos = equipoActual.getPuntos();
-        String puntosS = Integer.toString(puntos);
-        text.setText(puntosS);
+        String puntosString = Integer.toString(puntos);
+        text.setText(puntosString);
     }
 
 
@@ -89,6 +86,19 @@ public class MainActivity extends AppCompatActivity {
         mostrarResultado();
     }
 
+    public void cambioDeEquipo() {
+
+        TextView text = findViewById(R.id.nombre);
+        numero++;
+        if (numero == 2) {
+            equipoActual = equipo2;
+        } else {
+            numero = 1;
+            equipoActual = equipo1;
+        }
+        text.setText(equipoActual.getNombre());
+        mostrarResultado();
+    }
 
 
     //--------------------------------Timer----------------------------------------------
@@ -107,8 +117,9 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish() {
                 countDownText.setText("1:00");
                 timeLeftInMiliseconds= 60000;
-                Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
-                startActivity(AcertoONo);
+                //Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
+                //startActivity(AcertoONo);
+                cambioDeEquipo();
             }
         }.start();
     }

@@ -35,4 +35,12 @@ public class Equipo {
         this.puntos = puntos;
     }
 
+    public void incrementa(){
+        puntos++;
+    }
+
+    public void decrementa(){
+        puntos--;
+    }
+
 }

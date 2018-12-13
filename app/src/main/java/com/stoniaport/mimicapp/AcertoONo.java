@@ -15,11 +15,13 @@ public class AcertoONo extends AppCompatActivity {
 
     public void Si(View v) {
         Intent acerto = new Intent(AcertoONo.this, MainActivity.class);
+        //equipoActual.incrementa();
         startActivity(acerto);
     }
 
     public void No(View v) {
         Intent noAcerto = new Intent(AcertoONo.this, MainActivity.class);
+        //equipoActual.decrementa();
         startActivity(noAcerto);
     }
 }
