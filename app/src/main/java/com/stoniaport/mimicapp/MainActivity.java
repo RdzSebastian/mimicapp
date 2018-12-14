@@ -122,25 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
     //-------------------------- Puntaje -------------------------------------
 
-    public void incrementaContador(View Vista) {
-        equipoActual.incrementa();
-        mostrarResultado();
-    }
-
-    public void incrementaContador() {
-        equipoActual.incrementa();
-        mostrarResultado();
-    }
-
-    public void decrementaContador(View Vista) {
-        equipoActual.decrementa();
-        mostrarResultado();
-    }
-
-    public void decrementaContador() {
-        equipoActual.decrementa();
-        mostrarResultado();
-    }
+//eliminado pues redundante
 
 
     //---------------- Mostrar puntaje y equipo en la pantalla --------------------
@@ -260,19 +242,6 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish() {
                 countDownText.setText("1:00");
                 timeLeftInMiliseconds= 60000;
-                Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
-
-
-                AcertoONo.putExtra("equipo1",equipo1.getNombre());
-                AcertoONo.putExtra("puntos1",equipo1.getPuntos());
-
-                AcertoONo.putExtra("equipo2",equipo2.getNombre());
-                AcertoONo.putExtra("puntos2",equipo2.getPuntos());
-
-                AcertoONo.putExtra("equipoActual", equipoActual.getNombre());
-
-
-                startActivity(AcertoONo);
             }
 
         }.start();
@@ -333,7 +302,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+public void AcertoONo (){
+    Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
 
+    AcertoONo.putExtra("equipo1",equipo1.getNombre());
+    AcertoONo.putExtra("puntos1",equipo1.getPuntos());
+
+    AcertoONo.putExtra("equipo2",equipo2.getNombre());
+    AcertoONo.putExtra("puntos2",equipo2.getPuntos());
+
+    AcertoONo.putExtra("equipoActual", equipoActual.getNombre());
+
+    startActivity(AcertoONo);
+
+}
 
 
 
