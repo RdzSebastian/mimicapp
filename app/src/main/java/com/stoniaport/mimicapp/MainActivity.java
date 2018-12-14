@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     int puntos;
     String nombre;
+    String pelicula;
 
 
     Equipo equipo1 = new Equipo("Equipo 1", 1, 0);
@@ -74,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
 
             int puntos2 = datos.getInt("puntos2");
             equipo2.setPuntos(puntos2);
+
+            pelicula = datos.getString("pelicula");
+
 
 
             String equipoActualString = datos.getString("equipoActual");
@@ -166,6 +170,9 @@ public class MainActivity extends AppCompatActivity {
         TextView textNombre = findViewById(R.id.nombre);
         nombre = equipoActual.getNombre();
         textNombre.setText(nombre);
+
+        TextView Pelicula = findViewById(R.id.PeliculaSelect);
+        Pelicula.setText(pelicula);
 
     }
 
