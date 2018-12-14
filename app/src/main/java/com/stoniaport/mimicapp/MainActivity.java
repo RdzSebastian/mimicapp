@@ -144,15 +144,29 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void mostrarResultado() {
+        TextView textEquipo1 = findViewById(R.id.Equipo1);
+        String nombreEquipo1 = equipo1.getNombre();
+        textEquipo1.setText(nombreEquipo1);
+
+        TextView textPuntos1 = findViewById(R.id.puntos1);
+        int nombrePuntos1 = equipo1.getPuntos();
+        String nombreEquipo1String = Integer.toString(nombrePuntos1);
+        textPuntos1.setText(nombreEquipo1String);
+
+
+        TextView textEquipo2 = findViewById(R.id.Equipo2);
+        String nombreEquipo2 = equipo2.getNombre();
+        textEquipo2.setText(nombreEquipo2);
+
+        TextView textPuntos2 = findViewById(R.id.puntos2);
+        int nombrePuntos2 = equipo2.getPuntos();
+        String nombreEquipo2String = Integer.toString(nombrePuntos2);
+        textPuntos2.setText(nombreEquipo2String);
+
         TextView textNombre = findViewById(R.id.nombre);
         nombre = equipoActual.getNombre();
-
-        TextView textPuntos = findViewById(R.id.puntos);
-        puntos = equipoActual.getPuntos();
-        String puntosString = Integer.toString(puntos);
-
         textNombre.setText(nombre);
-        textPuntos.setText(puntosString);
+
     }
 
 
@@ -191,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
     public void reseteaContador(View Vista) {
         AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
         dialogo1.setTitle("Importante");
-        dialogo1.setMessage("¿ Quiere reiniciar el juego? ?");
+        dialogo1.setMessage("¿ Quiere reiniciar el juego?");
         dialogo1.setCancelable(false);
         dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialogo1, int id) {
