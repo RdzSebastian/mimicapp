@@ -12,7 +12,6 @@ import android.widget.TextView;
 public class pelicula extends AppCompatActivity {
 
     Button volver;
-
     String equipo1;
     int puntos1;
     String equipo2;
@@ -24,19 +23,17 @@ public class pelicula extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pelicula);
 
-       SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
 
-     /*    equipo1 = datos.getString("equipo1","equipo1");
-        puntos1 = datos.getInt("equipo1",0);
+        Bundle estado = getIntent().getExtras();
+        equipo1 = estado.getString("equipo1");
+        puntos1 = estado.getInt("puntos1");
 
-        equipo2 = datos.getString("equipo2","equipo1");
-        puntos2 = datos.getInt("equipo2",0);
-*/
-        equipoActual = datos.getString("equipoActual","equipo1");
+        equipo2 = estado.getString("equipo2");
+        puntos2 = estado.getInt("puntos2");
 
+        equipoActual = estado.getString("equipoActual");
 
         TextView nombreDeEquipoActual =findViewById(R.id.nombreDeEquipoActual);
-
         nombreDeEquipoActual.setText(equipoActual);
 
 
@@ -45,19 +42,14 @@ public class pelicula extends AppCompatActivity {
     public void volver(View v) {
         Intent intent = new Intent(pelicula.this, MainActivity.class);
 
-      SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
+        intent.putExtra("equipo1",equipo1);
+        intent.putExtra("puntos1",puntos1);
+        intent.putExtra("equipo2",equipo2);
+        intent.putExtra("puntos2",puntos2);
 
-        SharedPreferences.Editor miEditor = datos.edit();
-/*
-        miEditor.putString("equipo1",equipo1);
-        miEditor.putInt("equipo1",puntos1);
+        intent.putExtra("equipoActual", equipoActual);
 
-        miEditor.putString("equipo2",equipo2);
-        miEditor.putInt("equipo2",puntos2);
-*/
-        miEditor.putString("equipoActual",equipoActual);
 
-        miEditor.apply();
         startActivity(intent);
     }
 }

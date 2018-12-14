@@ -53,27 +53,32 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
+        Bundle datos = getIntent().getExtras();
 
-        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
-/*
-        equipo1.setNombre((datos.getString("equipo1","equipo1")));
-        equipo1.setPuntos(datos.getInt("equipo1",0));
+        if(datos != null){
+            String equipo1String = datos.getString("equipo1");
+            equipo1.setNombre(equipo1String);
 
-        equipo2.setNombre(datos.getString("equipo2","equipo2"));
-        equipo2.setPuntos(datos.getInt("equipo2",0));
+            int puntos1 = datos.getInt("puntos1");
+            equipo1.setPuntos(puntos1);
+
+            String equipo2String = datos.getString("equipo2");
+            equipo2.setNombre(equipo2String);
+
+            int puntos2 = datos.getInt("puntos2");
+            equipo2.setPuntos(puntos2);
 
 
-        if(equipo1.getNombre().equals(datos.getString("equipoActual","equipo1"))) {
-            equipoActual = equipo1;
+            String equipoActualString = datos.getString("equipoActual");
+
+                if(equipoActualString.equals(equipo1String)){
+                        equipoActual = equipo1;
+                    }
+                    else{
+                        equipoActual = equipo2;
+                    }
+            mostrarResultado();
         }
-        else {
-
-            equipoActual=equipo2;
-        }
-*/
-        equipoActual.setNombre((datos.getString("equipoActual","equipo1")));
-
-
     }
 
 
@@ -82,19 +87,6 @@ public class MainActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
 
-        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
-
-        SharedPreferences.Editor miEditor = datos.edit();
-
-      /*  miEditor.putString("equipo1",equipo1.getNombre());
-        miEditor.putInt("equipo1",equipo1.getPuntos());
-
-        miEditor.putString("equipo2",equipo2.getNombre());
-        miEditor.putInt("equipo2",equipo2.getPuntos());
-*/
-        miEditor.putString("equipoActual",equipoActual.getNombre());
-
-        miEditor.apply();
     }
 
 
@@ -104,43 +96,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void pelicula(View Vista) {
         Intent pelicula = new Intent(MainActivity.this, pelicula.class);
-        //EnviarValoresEntreActivities(pelicula);
+
+        pelicula.putExtra("equipo1",equipo1.getNombre());
+        pelicula.putExtra("puntos1",equipo1.getPuntos());
+
+        pelicula.putExtra("equipo2",equipo2.getNombre());
+        pelicula.putExtra("puntos2",equipo2.getPuntos());
+
+        pelicula.putExtra("equipoActual", equipoActual.getNombre());
+
         startActivity(pelicula);
     }
 
- /*
-    //-------------- Enviar valores entre activities ------------------------
 
-    public void EnviarValoresEntreActivities(Intent intent) {
-        intent.putExtra("equipo1", equipo1.getNombre());
-        intent.putExtra("equipo1", equipo1.getPuntos());
-        intent.putExtra("equipo2", equipo2.getNombre());
-        intent.putExtra("equipo2", equipo2.getPuntos());
-        intent.putExtra("equipoActual", equipoActual.getNombre());
-
-    }
-
-
-    //-------------- Recibir valores entre Activities -----------------------
-    public void recibirDatosEntreActivities(Bundle bundle){
-
-        equipo1.setNombre(bundle.getString("equipo1"));
-        equipo1.setPuntos(bundle.getInt("equipo1"));
-
-        equipo2.setNombre(bundle.getString("equipo2"));
-        equipo2.setPuntos(bundle.getInt("equipo2"));
-
-
-        if(equipo1.getNombre().equals(bundle.getString("equipoActual"))) {
-            equipoActual = equipo1;
-        }
-        else {
-
-            equipoActual=equipo2;
-        }
-
-    }
-*/
     //-------------------------- Puntaje -------------------------------------
 
     public void incrementaContador(View Vista) {
@@ -187,17 +155,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void cambioDeEquipo(View Vista) {
-        
 
         if(equipo1.getNombre().equals(equipoActual.getNombre())) {
             equipoActual = equipo2;
         }
         else {
-
             equipoActual=equipo1;
         }
-
-
         mostrarResultado();
     }
 
@@ -326,7 +290,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
 
-            equipoActual=equipo2;
+            equipoActual = equipo2;
         }
 
         mostrarResultado();
