@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private TextView countDownText;
     private Button countDownButton;
-    private long timeLeftInMiliseconds = 60000; // 1min
+    private long timeLeftInMiliseconds = 6000; // 1min
 
 
     @Override
@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
     //-------------- OnResume (cuando vienen de otra activity -----------------
     @Override
     public void onResume() {
@@ -56,6 +58,11 @@ public class MainActivity extends AppCompatActivity {
         Bundle datos = getIntent().getExtras();
 
         if(datos != null){
+
+            /*boolean cambio = datos.getBoolean("cambioDeEquipo");
+            if(cambio){
+                cambioDeEquipo();
+            }*/
             String equipo1String = datos.getString("equipo1");
             equipo1.setNombre(equipo1String);
 
@@ -166,17 +173,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cambioDeEquipo() {
-
-
         if(equipo1.getNombre().equals(equipoActual.getNombre())) {
             equipoActual = equipo2;
         }
         else {
-
             equipoActual=equipo1;
         }
-
-
         mostrarResultado();
     }
 
@@ -238,9 +240,20 @@ public class MainActivity extends AppCompatActivity {
                 countDownText.setText("1:00");
                 timeLeftInMiliseconds= 60000;
                 Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
+
+
+                AcertoONo.putExtra("equipo1",equipo1.getNombre());
+                AcertoONo.putExtra("puntos1",equipo1.getPuntos());
+
+                AcertoONo.putExtra("equipo2",equipo2.getNombre());
+                AcertoONo.putExtra("puntos2",equipo2.getPuntos());
+
+                AcertoONo.putExtra("equipoActual", equipoActual.getNombre());
+
+
                 startActivity(AcertoONo);
-                cambioDeEquipo();
             }
+
         }.start();
     }
 
@@ -259,7 +272,9 @@ public class MainActivity extends AppCompatActivity {
         countDownText.setText(timeLeftText);
     }
 
-    //-----------------------------Bundle-----------------------------------------------
+
+
+    //-------Almacena datos si doy vuelta la pantalla o si la pongo en segundo plano---------------
 
     public void onSaveInstanceState(Bundle estado){
 
