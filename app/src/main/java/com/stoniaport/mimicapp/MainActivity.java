@@ -2,21 +2,22 @@ package com.stoniaport.mimicapp;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 
     int puntos;
-    int numero = 1;
     String nombre;
-    boolean vueltaDeActivity=false;
+
 
     Equipo equipo1 = new Equipo("Equipo 1", 1, 0);
     Equipo equipo2 = new Equipo("Equipo 2", 2, 0);
@@ -53,43 +54,48 @@ public class MainActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
 
-        Bundle datos = getIntent().getExtras();
-        if (datos != null) {
-            vueltaDeActivity = datos.getBoolean("vueltaDeActivity");
-        }
-
-
-        if (vueltaDeActivity) {
-
-            String equipoA = datos.getString("equipo1");
-            int puntosA = datos.getInt("equipo1");
-
-            String equipoB = datos.getString("equipo2");
-            int puntosB = datos.getInt("equipo2");
-
-            String equipoActualString = datos.getString("equipoActual");
-
-
-            equipo1.setNombre(equipoA);
-            equipo1.setPuntos(puntosA);
-
-            equipo2.setNombre(equipoB);
-            equipo2.setPuntos(puntosB);
+        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
 /*
-            if (equipoA.equals(equipoActualString)) {
-                equipoActual = equipo1;
-            } else {
+        equipo1.setNombre((datos.getString("equipo1","equipo1")));
+        equipo1.setPuntos(datos.getInt("equipo1",0));
 
-                equipoActual = equipo2;
-            }
-*/
+        equipo2.setNombre(datos.getString("equipo2","equipo2"));
+        equipo2.setPuntos(datos.getInt("equipo2",0));
+
+
+        if(equipo1.getNombre().equals(datos.getString("equipoActual","equipo1"))) {
+            equipoActual = equipo1;
         }
+        else {
 
-        vueltaDeActivity = false;
-        mostrarResultado();
+            equipoActual=equipo2;
+        }
+*/
+        equipoActual.setNombre((datos.getString("equipoActual","equipo1")));
+
 
     }
 
+
+    //-----------  On pause ----------------------------------
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
+
+        SharedPreferences.Editor miEditor = datos.edit();
+
+      /*  miEditor.putString("equipo1",equipo1.getNombre());
+        miEditor.putInt("equipo1",equipo1.getPuntos());
+
+        miEditor.putString("equipo2",equipo2.getNombre());
+        miEditor.putInt("equipo2",equipo2.getPuntos());
+*/
+        miEditor.putString("equipoActual",equipoActual.getNombre());
+
+        miEditor.apply();
+    }
 
 
 
@@ -98,11 +104,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void pelicula(View Vista) {
         Intent pelicula = new Intent(MainActivity.this, pelicula.class);
-        EnviarValoresEntreActivities(pelicula);
+        //EnviarValoresEntreActivities(pelicula);
         startActivity(pelicula);
     }
 
-
+ /*
     //-------------- Enviar valores entre activities ------------------------
 
     public void EnviarValoresEntreActivities(Intent intent) {
@@ -113,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("equipoActual", equipoActual.getNombre());
 
     }
-    /*
+
 
     //-------------- Recibir valores entre Activities -----------------------
     public void recibirDatosEntreActivities(Bundle bundle){
@@ -168,8 +174,8 @@ public class MainActivity extends AppCompatActivity {
 
         TextView textPuntos = findViewById(R.id.puntos);
         puntos = equipoActual.getPuntos();
-
         String puntosString = Integer.toString(puntos);
+
         textNombre.setText(nombre);
         textPuntos.setText(puntosString);
     }
@@ -181,9 +187,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void cambioDeEquipo(View Vista) {
-
-        TextView textNombre = findViewById(R.id.nombre);
-
+        
 
         if(equipo1.getNombre().equals(equipoActual.getNombre())) {
             equipoActual = equipo2;
@@ -193,13 +197,12 @@ public class MainActivity extends AppCompatActivity {
             equipoActual=equipo1;
         }
 
-        textNombre.setText(equipoActual.getNombre());
+
         mostrarResultado();
     }
 
     public void cambioDeEquipo() {
 
-        TextView textNombre = findViewById(R.id.nombre);
 
         if(equipo1.getNombre().equals(equipoActual.getNombre())) {
             equipoActual = equipo2;
@@ -209,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
             equipoActual=equipo1;
         }
 
-        textNombre.setText(equipoActual.getNombre());
+
         mostrarResultado();
     }
 
@@ -331,12 +334,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //-----------  On pause ----------------------------------
-    @Override
-    public void onPause() {
-        super.onPause();
 
-    }
 
 
 }

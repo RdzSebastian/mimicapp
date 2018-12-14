@@ -1,6 +1,8 @@
 package com.stoniaport.mimicapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,43 +18,46 @@ public class pelicula extends AppCompatActivity {
     String equipo2;
     int puntos2;
     String equipoActual;
-    boolean vueltaDeActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pelicula);
 
+       SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
 
-        Bundle datos = getIntent().getExtras();
+     /*    equipo1 = datos.getString("equipo1","equipo1");
+        puntos1 = datos.getInt("equipo1",0);
 
-        equipo1 = datos.getString("equipo1");
-        puntos1 = datos.getInt("equipo1");
-
-        equipo2 = datos.getString("equipo2");
-        puntos2 = datos.getInt("equipo2");
-
-        equipoActual = datos.getString("equipoActual");
+        equipo2 = datos.getString("equipo2","equipo1");
+        puntos2 = datos.getInt("equipo2",0);
+*/
+        equipoActual = datos.getString("equipoActual","equipo1");
 
 
-        TextView nombreDeEquipoActual =(TextView)findViewById(R.id.nombreDeEquipoActual);
+        TextView nombreDeEquipoActual =findViewById(R.id.nombreDeEquipoActual);
 
         nombreDeEquipoActual.setText(equipoActual);
 
-        vueltaDeActivity=true;
 
     }
 
     public void volver(View v) {
         Intent intent = new Intent(pelicula.this, MainActivity.class);
 
-        intent.putExtra("equipo1", equipo1);
-        intent.putExtra("equipo1", puntos1);
-        intent.putExtra("equipo2", equipo2);
-        intent.putExtra("equipo2", puntos2);
-        intent.putExtra("equipoActual", equipoActual);
-        intent.putExtra("vueltaDeActivity", vueltaDeActivity);
+      SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
 
+        SharedPreferences.Editor miEditor = datos.edit();
+/*
+        miEditor.putString("equipo1",equipo1);
+        miEditor.putInt("equipo1",puntos1);
+
+        miEditor.putString("equipo2",equipo2);
+        miEditor.putInt("equipo2",puntos2);
+*/
+        miEditor.putString("equipoActual",equipoActual);
+
+        miEditor.apply();
         startActivity(intent);
     }
 }
