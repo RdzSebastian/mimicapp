@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     int puntos;
     int numero = 1;
+    String nombre;
 
     Equipo equipo1 = new Equipo("Equipo 1", 1, 0);
     Equipo equipo2 = new Equipo("Equipo 2", 2, 0);
@@ -46,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
+
     public void pelicula(View Vista) {
         Intent siguiente = new Intent(MainActivity.this, pelicula.class);
         startActivity(siguiente);
@@ -56,10 +60,79 @@ public class MainActivity extends AppCompatActivity {
         mostrarResultado();
     }
 
+    public void incrementaContador() {
+        equipoActual.incrementa();
+        mostrarResultado();
+    }
+
     public void decrementaContador(View Vista) {
         equipoActual.decrementa();
         mostrarResultado();
     }
+
+    public void decrementaContador() {
+        equipoActual.decrementa();
+        mostrarResultado();
+    }
+
+
+
+    public void mostrarResultado() {
+        TextView textNombre = findViewById(R.id.nombre);
+        nombre = equipoActual.getNombre();
+
+        TextView textPuntos = findViewById(R.id.puntos);
+        puntos = equipoActual.getPuntos();
+
+        String puntosString = Integer.toString(puntos);
+        textNombre.setText(nombre);
+        textPuntos.setText(puntosString);
+    }
+
+
+
+
+    //--------------------Cambio de equipo--------------------------
+
+
+    public void cambioDeEquipo(View Vista) {
+
+        TextView textNombre = findViewById(R.id.nombre);
+
+
+        if(equipo1.getNombre().equals(equipoActual.getNombre())) {
+            equipoActual = equipo2;
+        }
+        else {
+
+            equipoActual=equipo1;
+        }
+
+        textNombre.setText(equipoActual.getNombre());
+        mostrarResultado();
+    }
+
+    public void cambioDeEquipo() {
+
+        TextView textNombre = findViewById(R.id.nombre);
+
+        if(equipo1.getNombre().equals(equipoActual.getNombre())) {
+            equipoActual = equipo2;
+        }
+        else {
+
+            equipoActual=equipo1;
+        }
+
+        textNombre.setText(equipoActual.getNombre());
+        mostrarResultado();
+    }
+
+
+
+
+    //------------------------Restart juego ---------------------------------------------
+
 
     public void reseteaContador(View Vista) {
         AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
@@ -94,42 +167,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-    public void mostrarResultado() {
-        TextView text = findViewById(R.id.puntos);
-        puntos = equipoActual.getPuntos();
-        String puntosString = Integer.toString(puntos);
-        text.setText(puntosString);
-    }
-
-
-    public void cambioDeEquipo(View Vista) {
-
-        TextView text = findViewById(R.id.nombre);
-        numero++;
-        if (numero == 2) {
-            equipoActual = equipo2;
-        } else {
-            numero = 1;
-            equipoActual = equipo1;
-        }
-        text.setText(equipoActual.getNombre());
-        mostrarResultado();
-    }
-
-    public void cambioDeEquipo() {
-
-        TextView text = findViewById(R.id.nombre);
-        numero++;
-        if (numero == 2) {
-            equipoActual = equipo2;
-        } else {
-            numero = 1;
-            equipoActual = equipo1;
-        }
-        text.setText(equipoActual.getNombre());
-        mostrarResultado();
-    }
 
 
     //--------------------------------Timer----------------------------------------------
@@ -170,7 +207,44 @@ public class MainActivity extends AppCompatActivity {
         countDownText.setText(timeLeftText);
     }
 
-    //--------------------------------------------------------------------------------------
+    //-----------------------------Bundle-----------------------------------------------
+
+    public void onSaveInstanceState(Bundle estado){
+
+
+        estado.putInt(equipo1.getNombre(),equipo1.getPuntos());
+
+        estado.putInt(equipo2.getNombre(),equipo2.getPuntos());
+
+       estado.putString("equipoActual",equipoActual.getNombre());
+
+        super.onSaveInstanceState(estado);
+    }
+
+    public void onRestoreInstanceState(Bundle estado){
+
+        super.onRestoreInstanceState(estado);
+
+
+        equipo1.setPuntos(estado.getInt(equipo1.getNombre()));
+
+
+        equipo2.setPuntos(estado.getInt(equipo2.getNombre()));
+
+
+        if(equipo1.getNombre().equals(estado.getString("equipoActual"))) {
+            equipoActual = equipo1;
+        }
+        else {
+
+            equipoActual=equipo2;
+        }
+
+        mostrarResultado();
+
+    }
+
+
 
 }
 

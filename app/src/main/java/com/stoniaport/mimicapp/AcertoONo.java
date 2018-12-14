@@ -7,6 +7,8 @@ import android.view.View;
 
 public class AcertoONo extends AppCompatActivity {
 
+    MainActivity mainActivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,13 +17,13 @@ public class AcertoONo extends AppCompatActivity {
 
     public void Si(View v) {
         Intent acerto = new Intent(AcertoONo.this, MainActivity.class);
-        //equipoActual.incrementa();
+        mainActivity.incrementaContador();
         startActivity(acerto);
     }
 
     public void No(View v) {
         Intent noAcerto = new Intent(AcertoONo.this, MainActivity.class);
-        //equipoActual.decrementa();
+        mainActivity.decrementaContador();
         startActivity(noAcerto);
     }
 }
