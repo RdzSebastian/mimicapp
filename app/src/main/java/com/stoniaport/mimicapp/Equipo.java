@@ -5,6 +5,10 @@ public class Equipo {
     int numeroEquipo;
     int puntos;
 
+    public Equipo(){
+
+    }
+
     public Equipo(String nombre, int numeroEquipo, int puntos) {
         this.nombre = nombre;
         this.numeroEquipo = numeroEquipo;

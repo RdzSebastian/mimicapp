@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     int puntos;
     int numero = 1;
     String nombre;
+    boolean vueltaDeActivity=false;
 
     Equipo equipo1 = new Equipo("Equipo 1", 1, 0);
     Equipo equipo2 = new Equipo("Equipo 2", 2, 0);
@@ -47,13 +48,94 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //-------------- OnResume (cuando vienen de otra activity -----------------
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        Bundle datos = getIntent().getExtras();
+        if (datos != null) {
+            vueltaDeActivity = datos.getBoolean("vueltaDeActivity");
+        }
 
 
+        if (vueltaDeActivity) {
+
+            String equipoA = datos.getString("equipo1");
+            int puntosA = datos.getInt("equipo1");
+
+            String equipoB = datos.getString("equipo2");
+            int puntosB = datos.getInt("equipo2");
+
+            String equipoActualString = datos.getString("equipoActual");
+
+
+            equipo1.setNombre(equipoA);
+            equipo1.setPuntos(puntosA);
+
+            equipo2.setNombre(equipoB);
+            equipo2.setPuntos(puntosB);
+/*
+            if (equipoA.equals(equipoActualString)) {
+                equipoActual = equipo1;
+            } else {
+
+                equipoActual = equipo2;
+            }
+*/
+        }
+
+        vueltaDeActivity = false;
+        mostrarResultado();
+
+    }
+
+
+
+
+
+    //------------ Va a buscar pelicula a la Activity Pelicula ----------------
 
     public void pelicula(View Vista) {
-        Intent siguiente = new Intent(MainActivity.this, pelicula.class);
-        startActivity(siguiente);
+        Intent pelicula = new Intent(MainActivity.this, pelicula.class);
+        EnviarValoresEntreActivities(pelicula);
+        startActivity(pelicula);
     }
+
+
+    //-------------- Enviar valores entre activities ------------------------
+
+    public void EnviarValoresEntreActivities(Intent intent) {
+        intent.putExtra("equipo1", equipo1.getNombre());
+        intent.putExtra("equipo1", equipo1.getPuntos());
+        intent.putExtra("equipo2", equipo2.getNombre());
+        intent.putExtra("equipo2", equipo2.getPuntos());
+        intent.putExtra("equipoActual", equipoActual.getNombre());
+
+    }
+    /*
+
+    //-------------- Recibir valores entre Activities -----------------------
+    public void recibirDatosEntreActivities(Bundle bundle){
+
+        equipo1.setNombre(bundle.getString("equipo1"));
+        equipo1.setPuntos(bundle.getInt("equipo1"));
+
+        equipo2.setNombre(bundle.getString("equipo2"));
+        equipo2.setPuntos(bundle.getInt("equipo2"));
+
+
+        if(equipo1.getNombre().equals(bundle.getString("equipoActual"))) {
+            equipoActual = equipo1;
+        }
+        else {
+
+            equipoActual=equipo2;
+        }
+
+    }
+*/
+    //-------------------------- Puntaje -------------------------------------
 
     public void incrementaContador(View Vista) {
         equipoActual.incrementa();
@@ -76,6 +158,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //---------------- Mostrar puntaje y equipo en la pantalla --------------------
+
+
 
     public void mostrarResultado() {
         TextView textNombre = findViewById(R.id.nombre);
@@ -92,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    //--------------------Cambio de equipo--------------------------
+    //--------------------Cambio de equipo------------------------------------
 
 
     public void cambioDeEquipo(View Vista) {
@@ -131,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    //------------------------Restart juego ---------------------------------------------
+    //------------------------ Restart juego ---------------------------------------------
 
 
     public void reseteaContador(View Vista) {
@@ -185,8 +270,8 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish() {
                 countDownText.setText("1:00");
                 timeLeftInMiliseconds= 60000;
-                //Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
-                //startActivity(AcertoONo);
+                Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
+                startActivity(AcertoONo);
                 cambioDeEquipo();
             }
         }.start();
@@ -211,10 +296,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onSaveInstanceState(Bundle estado){
 
+        estado.putString("equipo1",equipo1.getNombre());
+        estado.putInt("equipo1",equipo1.getPuntos());
 
-        estado.putInt(equipo1.getNombre(),equipo1.getPuntos());
-
-        estado.putInt(equipo2.getNombre(),equipo2.getPuntos());
+        estado.putString("equipo2",equipo2.getNombre());
+        estado.putInt("equipo2",equipo2.getPuntos());
 
        estado.putString("equipoActual",equipoActual.getNombre());
 
@@ -225,11 +311,11 @@ public class MainActivity extends AppCompatActivity {
 
         super.onRestoreInstanceState(estado);
 
+        equipo1.setNombre(estado.getString("equipo1"));
+        equipo1.setPuntos(estado.getInt("equipo1"));
 
-        equipo1.setPuntos(estado.getInt(equipo1.getNombre()));
-
-
-        equipo2.setPuntos(estado.getInt(equipo2.getNombre()));
+        equipo2.setNombre(estado.getString("equipo2"));
+        equipo2.setPuntos(estado.getInt("equipo2"));
 
 
         if(equipo1.getNombre().equals(estado.getString("equipoActual"))) {
@@ -244,6 +330,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    //-----------  On pause ----------------------------------
+    @Override
+    public void onPause() {
+        super.onPause();
+
+    }
 
 
 }
