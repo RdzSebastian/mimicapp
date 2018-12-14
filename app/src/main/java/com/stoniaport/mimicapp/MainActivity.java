@@ -302,22 +302,32 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-public void AcertoONo (){
-    Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
+    public void Acierto (){
+        Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
 
-    AcertoONo.putExtra("equipo1",equipo1.getNombre());
-    AcertoONo.putExtra("puntos1",equipo1.getPuntos());
+        AcertoONo.putExtra("equipo1",equipo1.getNombre());
+        AcertoONo.putExtra("puntos1",equipo1.getPuntos());
 
-    AcertoONo.putExtra("equipo2",equipo2.getNombre());
-    AcertoONo.putExtra("puntos2",equipo2.getPuntos());
+        AcertoONo.putExtra("equipo2",equipo2.getNombre());
+        AcertoONo.putExtra("puntos2",equipo2.getPuntos());
 
-    AcertoONo.putExtra("equipoActual", equipoActual.getNombre());
-
-    startActivity(AcertoONo);
+         AcertoONo.putExtra("equipoActual", equipoActual.getNombre());
+         startActivity(AcertoONo);
 
 }
 
+    public void Acierto(View view) {
+        Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
 
+        AcertoONo.putExtra("equipo1",equipo1.getNombre());
+        AcertoONo.putExtra("puntos1",equipo1.getPuntos());
 
+        AcertoONo.putExtra("equipo2",equipo2.getNombre());
+        AcertoONo.putExtra("puntos2",equipo2.getPuntos());
+
+        AcertoONo.putExtra("equipoActual", equipoActual.getNombre());
+        startActivity(AcertoONo);
+
+    }
 }
 
