@@ -44,7 +44,147 @@ public class pelicula extends AppCompatActivity {
             "Coraline",
             "Crepusculo",
             "Duro de matar",
-            "El conjuro"
+            "El conjuro",
+            "American graffiti",
+            "Los crimenes de Grindelwald",
+            "Armageddon",
+            "Baby driver",
+            "Bajos instintos",
+            "El caballero de la noche",
+            "Batman Inicia",
+            "Batman Regresa",
+            "Black Panter",
+            "Cantando bajo la lluvia",
+            "Carrera de la muerte",
+            "El bueno, el malo y el feo",
+            "El cadaver de la novia",
+            "El día que la tierra se detuvo",
+            "El doctor Dolitle",
+            "El efecto mariposa",
+            "El expreso polar",
+            "El Grinch",
+            "El hombre araña",
+            "El juego del miedo",
+            "El maquinista",
+            "El orfanato",
+            "El perfume: historia de un asesino",
+            "El pianista",
+            "El resplandor",
+            "El Rey León",
+            "El transportador",
+            "Especies",
+            "Eterno resplandor de una mente sin recuerdos",
+            "Extraño mundo de jack",
+            "Fight club",
+            "Forrest Gump",
+            "Frankie winnie",
+            "GhostRider",
+            "Hackers",
+            "Halloween",
+            "Harry Potter y la piedra filosofal",
+            "Harry Potter y la camara secreta",
+            "Harry Potter y el prisionero de Azkaban",
+            "Harry Potter y el caliz de fuego",
+            "Harry Potter y la orden del fenix",
+            "Harry Potter y el misterio del principe",
+            "Harry Potter y las reliquias de la muerte",
+            "Hombre en llamas",
+            "Hostel",
+            "Hotel Rwanda",
+            "Hotel transilvania",
+            "Intensamente",
+            "Iron Man",
+            "it",
+            "Juego de gemelas",
+            "Jurasick World",
+            "Jurásik parck",
+            "Kill Bill vol 2",
+            "King Kong",
+            "Krank",
+            "Kujo",
+            "Mulan",
+            "Ni idea",
+            "Nieve negra",
+            "Otra vez 17",
+            "Perdida",
+            "Viernes 13",
+            "Walli-e",
+            "Y donde está el fantasma",
+            "Yo, robot",
+            "The crow",
+            "The Sandman",
+            "El joven manos de tijeras",
+            "Beetlejuice",
+            "Air bud",
+            "Garfield",
+            "La mujer maravilla",
+            "Inteligencia Artificial",
+            "Peter pan",
+            "El precio del mañana",
+            "Arrow",
+            "Breaking bad",
+            "BoJack Horseman",
+            "Mr. Robot",
+            "Narcos",
+            "Ash Vs Evil dead",
+            "Pokémon",
+            "The titans",
+            "Vikings",
+            "Rick and Morty",
+            "The wall",
+            "Thor Un mundo oscuro",
+            "Tomb raider",
+            "Toy Story",
+            "Truth or dare",
+            "Vecinos invasores",
+            "Pesadilla en la calle Elm",
+            "Pirañas asesinas",
+            "Piratas del Caribe",
+            "Pixel",
+            "Pocahontas",
+            "Predator",
+            "Psicosis",
+            "Ralph el demoledor",
+            "Rápido y furioso",
+            "Resident evil",
+            "Scary movie",
+            "Scooby doo",
+            "Scott Pilgrim Vs the world",
+            "Scream",
+            "Sharknado",
+            "Sinister",
+            "Star wars el despertar de la fuerza",
+            "Star wars el retorno del jedi",
+            "Superman",
+            "Taken",
+            "Taking Woodstock",
+            "Tambo",
+            "Terminator",
+            "La bruja",
+            "La era de hielo",
+            "La leyenda del jinete sin cabeza",
+            "La Masacre de texas",
+            "La máscara",
+            "la monja",
+            "La purga",
+            "La sirenita",
+            "La ventana indiscreta",
+            "Las locuras del emperador",
+            "Liberen a willie",
+            "Lilo y stich",
+            "Logan",
+            "Londres bajo fuego",
+            "Madagascar",
+            "Mars attacks",
+            "Matrix",
+            "Medianoche en París",
+            "Mi nombre es Sam",
+            "Mi pobre angelito",
+            "Mi villano favorito",
+            "Milk",
+            "Mision imposible",
+            "Monster inc"
+
     };
 
     @Override
@@ -96,144 +236,8 @@ public class pelicula extends AppCompatActivity {
 }
 
 /*
-        American graffiti
-        los crimenes de Grindelwald
-        Armageddon
-        Baby driver
-        Bajos instintos
-         el caballero de la noche
-        Batman Inicia
-        Batman regresa
-        Black Panter
-        Cantando bajo la lluvia
 
-        Carrera de la muerte
-        Death race
 
-        El bueno, el malo y el feo
-        El cadaver de la novia
 
-        El día que la tierra se detuvo
-        El doctor Dolitle
-        El efecto mariposa
-        El expreso polar
-        El Grinch
-        El hombre araña
-        El juego del miedo
-        El maquinista
-        el orfanato
-        El perfume: historia de un asesino
-        El pianista
-        El resplandor
-        El Rey León
-        El transportador
-        Especies
-        Eterno resplandor de una mente sin recuerdos
-        Extraño mundo de jack
-        Fight club
-        Forrest Gump
-        Frankie winnie
-        GhostRider
-        Hackers
-        Halloween
-        Harry Potter
-        hombre en llamas
-        Hostel
-        Hotel Rwanda
-        Hotel transilvania
-        Intensamente
-        Iron Man
-        it
-        Juego de gemelas
-        Jurasick World
-        Jurásik parck
-        Kill Bill vol 2
-        King Kong
-        Krank
-        Kujo
-        Mulan
-        Ni idea
-        Nieve negra
-        otra vez 17
-        Perdida
-        Viernes 13
-        Walli-e
-        Y donde está el fantasma
-        Yo, robot
-        The crow
-        The Sandman
-        El joven manos de tijeras
-        Beetlejuice
-        Air bud
-        Garfield
-        La mujer maravilla
-        Inteligencia Artificial
-        Peter pan
-        El precio del mañana
-        Arrow
-        Breaking bad
-        BoJack Horseman
-        Mr. Robot
-        Narcos
-        Ash Vs Evil dead
-        Pokémon
-        The titans
-        Vikings
-        Rick and Morty
-        The wall
-        Thor .Un mundo oscuro
-        Tom raider
-        Toy Story
-        Truth or dare
-        vecinos invasores
-        Pesadilla en la calle Elm
-        pirañas asesinas
-        Piratas del Caribe
-        pixel
-        Pocahontas
-        pocajontas
-        Predator
-        Psicosis
-        ralph el demoledor
-        Rápido y furioso
-        Resident evil
-        Scary movie
-        Scooby doo
-        Scott Pilgrim Vs the world
-        Scream
-        Sharknado
-        sinister
-        star wars el despertar de la fuerza
-        star wars el retorno del jedi
-        Superman
-        Taken
-        Taking Woodstock
-        Tambo
-        Terminator
-        la bruja
-        la era de hielo
-        La leyenda del jinete sin cabeza
-        LA Masacre de texas
-        La máscara
-        la monja
-        La purga
-        La sirenita
-        La ventana indiscreta
-        Las locuras del emperador
-        liberen a willie
-        Lilo y stich
-        Logan
-        londres bajo fuego
-        madagascar
-        Mars attacks
-        Matrix
-        Medianoche en París
-        Mi nombre es Sam
-        Mi pobre angelito
-        Mi villano favorito
-        Milk
-        Mission impossible
-        Moster inc
-        Pesadilla en la calle elm
 
 */
