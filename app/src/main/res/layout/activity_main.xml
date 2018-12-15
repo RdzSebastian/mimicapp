@@ -6,42 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <Button
-        android:id="@+id/incrementa"
+        android:id="@+id/buttonTime2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="196dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:onClick="incrementaContador"
-        android:text="Incrementa"
-        android:textSize="12sp"
+        android:layout_height="51dp"
+        android:layout_marginTop="285dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:onClick="Acierto"
+        android:text="Acerto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/decrementa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="196dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
-        android:onClick="decrementaContador"
-        android:text="Decrementa"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/incrementa"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toEndOf="@+id/cambio"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <Button
         android:id="@+id/cambio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="196dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginLeft="124dp"
+        android:layout_marginTop="200dp"
         android:onClick="cambioDeEquipo"
         android:text="cambio de equipo"
         android:textSize="12sp"
@@ -54,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:onClick="pelicula"
         android:text="Pelicula"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,13 +70,17 @@
         android:id="@+id/tiempo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="156dp"
-        android:layout_marginRight="156dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="148dp"
+        android:layout_marginRight="148dp"
         android:text="1:00"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/decrementa" />
+        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintStart_toStartOf="@+id/buttonTime"
+        app:layout_constraintTop_toTopOf="@+id/cambio" />
 
     <Button
         android:id="@+id/button8"
@@ -113,10 +101,10 @@
     <TextView
         android:id="@+id/PeliculaSelect"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="44dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="40dp"
         android:text="Pelicula"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/pelicula"
