@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private TextView countDownText;
     private Button countDownButton;
-    private long timeLeftInMiliseconds = 6000; // 1min
+    private long timeLeftInMiliseconds = 60000; // 1min
 
 
     @Override
