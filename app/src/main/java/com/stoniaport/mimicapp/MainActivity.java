@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     Equipo equipo2 = new Equipo("Equipo 2", 2, 0);
     Equipo equipoActual = equipo1;
 
+    Pelicula peliculaC = new Pelicula();
+
     private CountDownTimer countDownTimer;
     private TextView countDownText;
     private Button countDownButton;
@@ -103,26 +105,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    //------------ Va a buscar pelicula a la Activity Pelicula ----------------
+    //------------ Va a buscar la peli al metodo de la class ----------------
 
-    public void pelicula(View Vista) {
-        Intent pelicula = new Intent(MainActivity.this, pelicula.class);
 
-        pelicula.putExtra("equipo1",equipo1.getNombre());
-        pelicula.putExtra("puntos1",equipo1.getPuntos());
+    public void buscarPelicula(View Vista) {
+        pelicula = peliculaC.getPelicula();
+        mostrarResultado();
 
-        pelicula.putExtra("equipo2",equipo2.getNombre());
-        pelicula.putExtra("puntos2",equipo2.getPuntos());
-
-        pelicula.putExtra("equipoActual", equipoActual.getNombre());
-
-        startActivity(pelicula);
     }
-
-
-    //-------------------------- Puntaje -------------------------------------
-
-//eliminado pues redundante
 
 
     //---------------- Mostrar puntaje y equipo en la pantalla --------------------
@@ -153,8 +143,8 @@ public class MainActivity extends AppCompatActivity {
         nombre = equipoActual.getNombre();
         textNombre.setText(nombre);
 
-        TextView Pelicula = findViewById(R.id.PeliculaSelect);
-        Pelicula.setText(pelicula);
+        TextView PeliculaV = findViewById(R.id.PeliculaSelect);
+        PeliculaV.setText(pelicula);
 
     }
 
@@ -242,6 +232,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish() {
                 countDownText.setText("1:00");
                 timeLeftInMiliseconds= 60000;
+                Acierto();
             }
 
         }.start();
@@ -279,6 +270,7 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(estado);
     }
 
+
     public void onRestoreInstanceState(Bundle estado){
 
         super.onRestoreInstanceState(estado);
@@ -302,7 +294,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void Acierto (){
+
+
+    public void Acierto() {
         Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
 
         AcertoONo.putExtra("equipo1",equipo1.getNombre());
@@ -311,10 +305,11 @@ public class MainActivity extends AppCompatActivity {
         AcertoONo.putExtra("equipo2",equipo2.getNombre());
         AcertoONo.putExtra("puntos2",equipo2.getPuntos());
 
-         AcertoONo.putExtra("equipoActual", equipoActual.getNombre());
-         startActivity(AcertoONo);
+        AcertoONo.putExtra("equipoActual", equipoActual.getNombre());
+        AcertoONo.putExtra("pelicula", pelicula);
+        startActivity(AcertoONo);
 
-}
+    }
 
     public void Acierto(View view) {
         Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
@@ -326,6 +321,7 @@ public class MainActivity extends AppCompatActivity {
         AcertoONo.putExtra("puntos2",equipo2.getPuntos());
 
         AcertoONo.putExtra("equipoActual", equipoActual.getNombre());
+        AcertoONo.putExtra("pelicula", pelicula);
         startActivity(AcertoONo);
 
     }

@@ -9,17 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class pelicula extends AppCompatActivity {
+import java.lang.reflect.Array;
 
-    Button volver;
-    String equipo1;
-    int puntos1;
-    String equipo2;
-    int puntos2;
-    String equipoActual;
-    String peliculaSeleccionada;
+public class Pelicula{
 
-    private String[] pelicula = {
+
+    String[] pelicula = {
             "300",
             "101 dalmatas",
             "Actividad paranormal",
@@ -187,57 +182,17 @@ public class pelicula extends AppCompatActivity {
 
     };
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pelicula);
+    public Pelicula() {
+    }
 
-
-        Bundle estado = getIntent().getExtras();
-        equipo1 = estado.getString("equipo1");
-        puntos1 = estado.getInt("puntos1");
-
-        equipo2 = estado.getString("equipo2");
-        puntos2 = estado.getInt("puntos2");
-
-        equipoActual = estado.getString("equipoActual");
-
-        TextView nombreDeEquipoActual =findViewById(R.id.nombreDeEquipoActual);
-        nombreDeEquipoActual.setText(equipoActual);
+    public String getPelicula(){
 
 
         int i = (int) (Math.random() * 25) + 1;
-        peliculaSeleccionada = pelicula[i];
+        String peliculaSeleccionada = pelicula[i];
 
-        TextView Pelicula = findViewById(R.id.PELICULA);
-        Pelicula.setText(peliculaSeleccionada);
-
+    return peliculaSeleccionada;
     }
-
-    public void volver(View v) {
-        Intent intent = new Intent(pelicula.this, MainActivity.class);
-
-        intent.putExtra("equipo1",equipo1);
-        intent.putExtra("puntos1",puntos1);
-        intent.putExtra("equipo2",equipo2);
-        intent.putExtra("puntos2",puntos2);
-
-        intent.putExtra("equipoActual", equipoActual);
-
-        intent.putExtra("pelicula", peliculaSeleccionada);
-
-
-        startActivity(intent);
-    }
-
-
 
 
 }
-
-/*
-
-
-
-
-*/
