@@ -205,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
         cambioDeEquipo();
         equipoActual.setPuntos(0);
         equipoActual = equipo1;
+        pelicula = "";
 
         mostrarResultado();
     }
