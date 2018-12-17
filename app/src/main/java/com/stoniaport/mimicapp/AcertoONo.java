@@ -13,6 +13,7 @@ public class AcertoONo extends AppCompatActivity {
     String equipo2;
     int puntos2;
     String equipoActual;
+    String pelicula;
 
     boolean cambioDeEquipo;
 
@@ -30,6 +31,7 @@ public class AcertoONo extends AppCompatActivity {
         puntos2 = estado.getInt("puntos2");
 
         equipoActual = estado.getString("equipoActual");
+        pelicula = estado.getString("pelicula");
 
         cambioDeEquipo = true;
 
@@ -52,6 +54,7 @@ public class AcertoONo extends AppCompatActivity {
         acerto.putExtra("puntos2",puntos2);
 
         acerto.putExtra("equipoActual", equipoActual);
+        acerto.putExtra("pelicula",pelicula);
 
         //acerto.putExtra("cambioDeEquipo",cambioDeEquipo);
 
@@ -66,6 +69,7 @@ public class AcertoONo extends AppCompatActivity {
         noAcerto.putExtra("puntos2",puntos2);
 
         noAcerto.putExtra("equipoActual", equipoActual);
+        noAcerto.putExtra("pelicula",pelicula);
 
         //noAcerto.putExtra("cambioDeEquipo",cambioDeEquipo);
 
