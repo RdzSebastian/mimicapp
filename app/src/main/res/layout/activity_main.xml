@@ -1,236 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical"
+    >
 
 
-    <Button
-        android:id="@+id/buttonTime2"
+    <LinearLayout android:orientation="horizontal"
+        android:layout_margin="12dip"
         android:layout_width="wrap_content"
-        android:layout_height="51dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="Acierto"
-        android:text="Acerto"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.963"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.635" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/cambio"
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="75dp"
+            android:text="Equipo jugando"/>
+
+        <TextView
+            android:id="@+id/nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:text="Equipo X"/>
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_margin="12dip"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="cambioDeEquipo"
-        android:text="cambio de equipo"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.44" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/pelicula"
+        <TextView
+            android:id="@+id/Equipo1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Equipo1"
+            android:layout_marginLeft="100dp"/>
+
+        <TextView
+            android:id="@+id/puntos1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:paddingLeft="16dp"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_margin="12dip"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="pelicula"
-        android:text="Pelicula"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.789" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/nombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="132dp"
-        android:layout_marginRight="132dp"
-        android:text="Equipo 1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/Equipo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Equipo2"
+            android:layout_marginLeft="100dp"
+            android:textSize="14sp" />
 
-    <Button
-        android:id="@+id/buttonTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Empezar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.602" />
+        <TextView
+            android:id="@+id/puntos2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:paddingLeft="16dp"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tiempo"
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="1:00"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonTime2"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toEndOf="@+id/buttonTime"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.621" />
+        android:layout_margin="12dip"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="116dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="reseteaContador"
-        android:text="Reiniciar Partida"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/cambio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="cambioDeEquipo"
+            android:text="cambio de equipo"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="20dp"
+            android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/PeliculaSelect"
+    </LinearLayout>
+
+
+
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Pelicula"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.149"
-        app:layout_constraintStart_toEndOf="@+id/pelicula"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.771" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/Equipo1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Equipo1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/puntos1"
-        app:layout_constraintHorizontal_bias="0.471"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.132" />
+        <Button
+            android:id="@+id/buttonTime2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="Acierto"
+            android:text="Acerto"
+            android:layout_marginLeft="20dp"/>
 
-    <TextView
-        android:id="@+id/Equipo2"
+        <TextView
+            android:id="@+id/tiempo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1:00"
+            android:textSize="36sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="20dp"/>
+
+        <Button
+            android:id="@+id/buttonTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Empezar"
+            android:layout_marginLeft="20dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Equipo2"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/puntos2"
-        app:layout_constraintHorizontal_bias="0.449"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Equipo1" />
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/puntos1"
+        <Button
+            android:id="@+id/pelicula"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="pelicula"
+            android:text="Pelicula"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:id="@+id/PeliculaSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pelicula"
+            android:textSize="24sp"
+            android:layout_marginLeft="20dp"/>
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_margin="12dip"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.134" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/puntos2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/puntos1" />
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="116dp"
+            android:layout_height="34dp"
+            android:onClick="reseteaContador"
+            android:text="Reiniciar Partida"
+            android:textSize="10sp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="100dp"/>
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Equipo jugando"
-        app:layout_constraintEnd_toStartOf="@+id/nombre"
-        app:layout_constraintHorizontal_bias="0.391"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
 
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
