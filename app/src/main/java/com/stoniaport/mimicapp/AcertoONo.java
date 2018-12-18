@@ -57,6 +57,7 @@ public class AcertoONo extends AppCompatActivity {
         acerto.putExtra("pelicula",pelicula);
 
         //acerto.putExtra("cambioDeEquipo",cambioDeEquipo);
+        //acerto.putExtra("acerto",true);
 
         startActivity(acerto);
     }

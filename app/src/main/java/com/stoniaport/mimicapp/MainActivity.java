@@ -2,9 +2,7 @@ package com.stoniaport.mimicapp;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.CountDownTimer;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,13 +10,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+//import java.lang.reflect.Array;
+//import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
 
     int puntos;
     String nombre;
     String pelicula;
-
+    //ArrayList <String> peliculaYaJugada = new ArrayList<>();
 
     Equipo equipo1 = new Equipo("Equipo 1", 1, 0);
     Equipo equipo2 = new Equipo("Equipo 2", 2, 0);
@@ -80,7 +81,13 @@ public class MainActivity extends AppCompatActivity {
 
             pelicula = datos.getString("pelicula");
 
+            /*
+            boolean acerto = datos.getBoolean("acerto");
 
+            if(acerto){
+                peliculaYaJugada.add(pelicula);
+            }
+            */
 
             String equipoActualString = datos.getString("equipoActual");
 
@@ -109,7 +116,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void buscarPelicula(View Vista) {
+
         pelicula = peliculaC.getPelicula();
+        /*
+        int i;
+        for(i=0;i<250;i++)
+            for (String peliculaYa: peliculaYaJugada) {
+                if(peliculaYa.equals(pelicula)) {
+                    pelicula = peliculaC.getPelicula();
+                }else {
+                    i=250;
+                    break;
+                }
+            }*/
         mostrarResultado();
 
     }
@@ -308,6 +327,8 @@ public class MainActivity extends AppCompatActivity {
 
         AcertoONo.putExtra("equipoActual", equipoActual.getNombre());
         AcertoONo.putExtra("pelicula", pelicula);
+
+
         startActivity(AcertoONo);
 
     }
