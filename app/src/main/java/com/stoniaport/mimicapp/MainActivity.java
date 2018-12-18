@@ -28,15 +28,16 @@ public class MainActivity extends AppCompatActivity {
 
     Pelicula peliculaC = new Pelicula();
 
-    private CountDownTimer countDownTimer;
+
     private TextView countDownText;
-    private Button countDownButton;
+
     private long timeLeftInMiliseconds = 60000; // 1min
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Button countDownButton;
         setContentView(R.layout.activity_main);
 
         countDownText = findViewById(R.id.tiempo);
@@ -243,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void startTimer() {
-        countDownTimer = new CountDownTimer(timeLeftInMiliseconds, 1000) {
+        CountDownTimer countDownTimer = new CountDownTimer(timeLeftInMiliseconds, 1000) {
 
             @Override
             public void onTick(long millisUntilFinished) {
