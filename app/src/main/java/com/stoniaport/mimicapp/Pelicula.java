@@ -10,8 +10,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class Pelicula{
+
+
+    ArrayList<String> ultimas15 = new ArrayList<String>();
 
 
     String[] pelicula = {
@@ -62,13 +66,11 @@ public class Pelicula{
             "El juego del miedo",
             "El maquinista",
             "El orfanato",
-            "El perfume: historia de un asesino",
             "El pianista",
             "El resplandor",
             "El Rey León",
             "El transportador",
             "Especies",
-            "Eterno resplandor de una mente sin recuerdos",
             "Extraño mundo de jack",
             "Fight club",
             "Forrest Gump",
@@ -76,13 +78,7 @@ public class Pelicula{
             "GhostRider",
             "Hackers",
             "Halloween",
-            "Harry Potter y la piedra filosofal",
-            "Harry Potter y la camara secreta",
-            "Harry Potter y el prisionero de Azkaban",
-            "Harry Potter y el caliz de fuego",
-            "Harry Potter y la orden del fenix",
-            "Harry Potter y el misterio del principe",
-            "Harry Potter y las reliquias de la muerte",
+            "Harry Potter",
             "Hombre en llamas",
             "Hostel",
             "Hotel Rwanda",
@@ -98,7 +94,6 @@ public class Pelicula{
             "Krank",
             "Kujo",
             "Mulan",
-            "Ni idea",
             "Nieve negra",
             "Otra vez 17",
             "Perdida",
@@ -148,8 +143,8 @@ public class Pelicula{
             "Scream",
             "Sharknado",
             "Sinister",
-            "Star wars el despertar de la fuerza",
-            "Star wars el retorno del jedi",
+            "Star wars",
+            "Star wars",
             "Superman",
             "Taken",
             "Taking Woodstock",
@@ -185,11 +180,40 @@ public class Pelicula{
     public Pelicula() {
     }
 
-    public String getPelicula(){
+    public String getPelicula(int cantidadDeVecesQuePediUnaPelicula) {
 
-
-        int i = (int) (Math.random() * 25) + 1;
+        int i = (int) (Math.random() * 160) + 1; //160 peliculas
         String peliculaSeleccionada = pelicula[i];
+
+        boolean cambio;
+
+        do {
+            cambio = false;
+            for (String check : ultimas15) {
+                if (check.equals(peliculaSeleccionada)) {
+
+                    i = (int) (Math.random() * 160) + 1;
+                    peliculaSeleccionada = pelicula[i];
+                    cambio = true;
+                }
+            }
+        } while (cambio);
+
+
+
+        if (cantidadDeVecesQuePediUnaPelicula>16) {
+            ultimas15.remove(0);
+            for (i = 1;i<15;i++){
+
+                String p = ultimas15.get(i);
+                ultimas15.add(i-1, p);
+
+            }
+            ultimas15.add(15,peliculaSeleccionada);
+        }
+        else {
+            ultimas15.add(peliculaSeleccionada);
+        }
 
     return peliculaSeleccionada;
     }

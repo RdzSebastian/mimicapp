@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     int puntos;
     String nombre;
     String pelicula;
+    int cantidadDeVecesQuePediUnaPelicula=0;
     //ArrayList <String> peliculaYaJugada = new ArrayList<>();
 
     Equipo equipo1 = new Equipo("Equipo 1", 1, 0);
@@ -117,7 +118,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void buscarPelicula(View Vista) {
 
-        pelicula = peliculaC.getPelicula();
+        pelicula = peliculaC.getPelicula(cantidadDeVecesQuePediUnaPelicula);
+        cantidadDeVecesQuePediUnaPelicula++;
+
         /*
         int i;
         for(i=0;i<250;i++)
