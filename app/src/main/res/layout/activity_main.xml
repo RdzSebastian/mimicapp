@@ -1,42 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_margin="20dp"
     android:background="@android:color/white">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_alignParentTop="true"
         android:background="@color/colorAccent"
-        >
+        android:orientation="vertical"
+        android:id="@+id/equipoTop">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:orientation="horizontal">
+            android:gravity="center_horizontal|center"
+            android:orientation="horizontal"
+            >
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Equipo jugando"
-                android:layout_marginStart="80dp"
-                android:layout_marginLeft="80dp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
 
             <TextView
                 android:id="@+id/nombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:text="Equipo X"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -45,24 +49,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:gravity="center_horizontal|center"
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/Equipo1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="120dp"
-                android:textSize="20sp"
                 android:text="Equipo1"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/puntos1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:text="0"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -71,66 +77,68 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:gravity="center_horizontal|center"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/Equipo2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="120dp"
                 android:text="Equipo2"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/puntos2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:text="0"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
 
         </LinearLayout>
     </LinearLayout>
 
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorPrimaryDark"
+        android:id="@id/r1"
+        android:layout_below="@+id/equipoTop">
 
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:background="@android:color/white"/>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@android:color/white"/>
 
     </LinearLayout>
 
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:background="@color/colorAccent"
-        >
+        android:orientation="vertical"
+        android:id="@id/cambio"
+        android:layout_below="@+id/r1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
+            android:gravity="center_horizontal|center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/cambio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="90dp"
-
                 android:onClick="cambioDeEquipo"
                 android:text="cambio de equipo"
                 android:textSize="14sp" />
@@ -140,11 +148,15 @@
 
     </LinearLayout>
 
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorPrimaryDark"
+        android:id="@id/r2"
+        android:layout_below="@+id/cambio">
+
+
 
 
         <View
@@ -155,47 +167,48 @@
     </LinearLayout>
 
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:orientation="vertical"
         android:background="@color/colorAccent"
-        >
+        android:orientation="vertical"
+        android:layout_below="@+id/r2"
+        android:id="@+id/peli">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
+            android:gravity="center_horizontal|center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/buttonTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
                 android:text="Empezar" />
+
+            <android.support.v4.widget.Space
+                android:layout_width="20dp"
+                android:layout_height="0dp" />
 
             <TextView
                 android:id="@+id/tiempo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="8dp"
                 android:text="1:00"
-                android:textSize="36sp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="36sp" />
 
+            <android.support.v4.widget.Space
+                android:layout_width="20dp"
+                android:layout_height="0dp" />
 
             <Button
                 android:id="@+id/buttonTime2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
                 android:onClick="Acierto"
                 android:text="Acerto" />
 
@@ -205,44 +218,47 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_margin="20dp"
+            android:gravity="center_horizontal|start"
             android:orientation="horizontal">
+
+            <android.support.v4.widget.Space
+                android:layout_width="20dp"
+                android:layout_height="0dp" />
 
             <Button
                 android:id="@+id/pelicula"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_gravity="left"
                 android:onClick="buscarPelicula"
                 android:text="Pelicula" />
+
+            <android.support.v4.widget.Space
+                android:layout_width="20dp"
+                android:layout_height="0dp" />
 
             <TextView
                 android:id="@+id/PeliculaSelect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:text="Pelicula"
-                android:textSize="24sp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
 
         </LinearLayout>
 
 
-
-
     </LinearLayout>
 
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorPrimaryDark"
+        android:layout_below="@+id/peli">
+
+
 
 
         <View
@@ -253,31 +269,32 @@
     </LinearLayout>
 
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
         android:background="@color/colorAccent"
+        android:orientation="vertical"
         >
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center_horizontal|center">
 
             <Button
                 android:id="@+id/button8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="120dp"
-                android:layout_marginLeft="120dp"
                 android:onClick="reseteaContador"
                 android:text="Reiniciar Partida"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
