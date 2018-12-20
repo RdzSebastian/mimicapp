@@ -166,7 +166,6 @@
 
     </LinearLayout>
 
-
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -176,77 +175,76 @@
         android:layout_below="@+id/r2"
         android:id="@+id/peli">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:gravity="center_horizontal|center"
-            android:orientation="horizontal">
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp">
 
-            <Button
-                android:id="@+id/buttonTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Empezar" />
-
-            <android.support.v4.widget.Space
-                android:layout_width="20dp"
-                android:layout_height="0dp" />
 
             <TextView
                 android:id="@+id/tiempo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
                 android:text="1:00"
                 android:textColor="@android:color/white"
                 android:textSize="36sp" />
 
-            <android.support.v4.widget.Space
-                android:layout_width="20dp"
-                android:layout_height="0dp" />
 
             <Button
                 android:id="@+id/buttonTime2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:onClick="Acierto"
-                android:text="Acerto" />
+                android:text="Acerto"
+                android:layout_alignParentLeft="true" />
 
-        </LinearLayout>
+            <Button
+                android:id="@+id/buttonTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:text="Empezar"
+                android:layout_alignParentRight="true" />
+
+        </RelativeLayout>
 
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal|start"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp">
 
-            <android.support.v4.widget.Space
-                android:layout_width="20dp"
-                android:layout_height="0dp" />
 
             <Button
                 android:id="@+id/pelicula"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:onClick="buscarPelicula"
-                android:text="Pelicula" />
+                android:text="Pelicula"
+                android:layout_alignParentLeft="true" />
 
-            <android.support.v4.widget.Space
-                android:layout_width="20dp"
-                android:layout_height="0dp" />
 
             <TextView
                 android:id="@+id/PeliculaSelect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_centerInParent="true"
                 android:text="Pelicula"
                 android:textColor="@android:color/white"
                 android:textSize="24sp" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
     </LinearLayout>
@@ -256,10 +254,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
-        android:layout_below="@+id/peli">
-
-
-
+        android:layout_below="@+id/peli"
+        android:id="@+id/r3">
 
         <View
             android:layout_width="match_parent"
@@ -275,6 +271,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorAccent"
         android:orientation="vertical"
+        android:layout_below="@+id/r3"
         >
 
 
