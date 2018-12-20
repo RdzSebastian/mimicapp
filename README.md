@@ -24,5 +24,6 @@ to stop the timer early:
 
      if(waitTimer != null) {
          waitTimer.cancel();
+         waitTimer.purge();
          waitTimer = null;
      }
