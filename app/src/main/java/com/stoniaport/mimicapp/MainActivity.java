@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     int puntos;
     String nombre;
     String pelicula;
-    int cantidadDeVecesQuePediUnaPelicula=0;
+    int cantidadDeVecesQuePediUnaPelicula;
     //ArrayList <String> peliculaYaJugada = new ArrayList<>();
 
     Equipo equipo1 = new Equipo("Equipo 1", 1, 0);
@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
         puntos = 0;
         mostrarResultado();
+
+        cantidadDeVecesQuePediUnaPelicula=0;
 
         countDownButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
 
     }
+
 
 
 
