@@ -56,8 +56,7 @@ public class AcertoONo extends AppCompatActivity {
         acerto.putExtra("equipoActual", equipoActual);
         acerto.putExtra("pelicula",pelicula);
 
-        //acerto.putExtra("cambioDeEquipo",cambioDeEquipo);
-        //acerto.putExtra("acerto",true);
+        acerto.putExtra("acerto",true);
 
         startActivity(acerto);
     }
@@ -72,7 +71,7 @@ public class AcertoONo extends AppCompatActivity {
         noAcerto.putExtra("equipoActual", equipoActual);
         noAcerto.putExtra("pelicula",pelicula);
 
-        //noAcerto.putExtra("cambioDeEquipo",cambioDeEquipo);
+        noAcerto.putExtra("acerto",false);
 
         startActivity(noAcerto);
     }

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Pelicula{
 
@@ -24,7 +25,6 @@ public class Pelicula{
             "Actividad paranormal",
             "Avengers",
             "Alien",
-            "el octavo pasajero",
             "American Psycho",
             "Anabel",
             "Anaconda",
@@ -39,29 +39,31 @@ public class Pelicula{
             "Capitán América",
             "Cars",
             "Carrie",
-            "cementerio de animales",
+            "Cementerio de animales",
             "Coraline",
             "Crepusculo",
             "Duro de matar",
-            "El conjuro",
             "American graffiti",
             "Los crimenes de Grindelwald",
             "Armageddon",
             "Baby driver",
             "Bajos instintos",
-            "El caballero de la noche",
             "Batman Inicia",
             "Batman Regresa",
             "Black Panter",
             "Cantando bajo la lluvia",
             "Carrera de la muerte",
+            "El caballero de la noche",
             "El bueno, el malo y el feo",
             "El cadaver de la novia",
+            "El conjuro",
             "El día que la tierra se detuvo",
             "El doctor Dolitle",
             "El efecto mariposa",
+            "El octavo pasajero",
             "El expreso polar",
             "El Grinch",
+            "El joven manos de tijeras",
             "El hombre araña",
             "El juego del miedo",
             "El maquinista",
@@ -70,6 +72,7 @@ public class Pelicula{
             "El resplandor",
             "El Rey León",
             "El transportador",
+            "El precio del mañana",
             "Especies",
             "Extraño mundo de jack",
             "Fight club",
@@ -85,7 +88,7 @@ public class Pelicula{
             "Hotel transilvania",
             "Intensamente",
             "Iron Man",
-            "it",
+            "It",
             "Juego de gemelas",
             "Jurasik World",
             "Jurasik park",
@@ -94,6 +97,16 @@ public class Pelicula{
             "Krank",
             "Kujo",
             "Mulan",
+            "Madagascar",
+            "Mars attacks",
+            "Matrix",
+            "Medianoche en París",
+            "Mi nombre es Sam",
+            "Mi pobre angelito",
+            "Mi villano favorito",
+            "Milk",
+            "Mision imposible",
+            "Monster inc",
             "Nieve negra",
             "Otra vez 17",
             "Perdida",
@@ -103,14 +116,11 @@ public class Pelicula{
             "Yo, robot",
             "The crow",
             "The Sandman",
-            "El joven manos de tijeras",
             "Beetlejuice",
             "Air bud",
             "Garfield",
-            "La mujer maravilla",
             "Inteligencia Artificial",
             "Peter pan",
-            "El precio del mañana",
             "Arrow",
             "Breaking bad",
             "BoJack Horseman",
@@ -155,7 +165,8 @@ public class Pelicula{
             "La leyenda del jinete sin cabeza",
             "La Masacre de texas",
             "La máscara",
-            "la monja",
+            "La mujer maravilla",
+            "La monja",
             "La purga",
             "La sirenita",
             "La ventana indiscreta",
@@ -164,16 +175,7 @@ public class Pelicula{
             "Lilo y stich",
             "Logan",
             "Londres bajo fuego",
-            "Madagascar",
-            "Mars attacks",
-            "Matrix",
-            "Medianoche en París",
-            "Mi nombre es Sam",
-            "Mi pobre angelito",
-            "Mi villano favorito",
-            "Milk",
-            "Mision imposible",
-            "Monster inc"
+
 
     };
 
@@ -182,7 +184,10 @@ public class Pelicula{
 
     public String getPelicula(int cantidadDeVecesQuePediUnaPelicula) {
 
-        int i = (int) (Math.random() * 160) + 1; //160 peliculas
+        Random number = new Random();
+        int i = number.nextInt(pelicula.length + 1);
+
+
         String peliculaSeleccionada = pelicula[i];
 
         boolean cambio;
@@ -195,10 +200,10 @@ public class Pelicula{
                     i = (int) (Math.random() * 160) + 1;
                     peliculaSeleccionada = pelicula[i];
                     cambio = true;
+                    break;
                 }
             }
         } while (cambio);
-
 
 
         if (cantidadDeVecesQuePediUnaPelicula>16) {

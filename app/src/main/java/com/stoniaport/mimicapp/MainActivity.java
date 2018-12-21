@@ -10,8 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-//import java.lang.reflect.Array;
-//import java.util.ArrayList;
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -20,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     String nombre;
     String pelicula;
     int cantidadDeVecesQuePediUnaPelicula;
-    //ArrayList <String> peliculaYaJugada = new ArrayList<>();
+    ArrayList <String> peliculaYaJugada = new ArrayList<>();
 
     Equipo equipo1 = new Equipo("Equipo 1", 1, 0);
     Equipo equipo2 = new Equipo("Equipo 2", 2, 0);
@@ -28,11 +27,13 @@ public class MainActivity extends AppCompatActivity {
 
     Pelicula peliculaC = new Pelicula();
 
+    boolean cambio;
 
     private TextView countDownText;
 
     private long timeLeftInMiliseconds = 60000; // 1min
 
+    CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,10 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(datos != null){
 
-            /*boolean cambio = datos.getBoolean("cambioDeEquipo");
-            if(cambio){
-                cambioDeEquipo();
-            }*/
+
             String equipo1String = datos.getString("equipo1");
             equipo1.setNombre(equipo1String);
 
@@ -85,22 +83,26 @@ public class MainActivity extends AppCompatActivity {
 
             pelicula = datos.getString("pelicula");
 
-            /*
+
             boolean acerto = datos.getBoolean("acerto");
 
             if(acerto){
                 peliculaYaJugada.add(pelicula);
             }
-            */
+
 
             String equipoActualString = datos.getString("equipoActual");
 
+            if (equipoActualString != null) {
                 if(equipoActualString.equals(equipo1String)){
                         equipoActual = equipo1;
+                        cambioDeEquipo();
                     }
                     else{
                         equipoActual = equipo2;
+                        cambioDeEquipo();
                     }
+            }
             mostrarResultado();
         }
     }
@@ -121,25 +123,35 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void buscarPelicula(View Vista) {
-
         pelicula = peliculaC.getPelicula(cantidadDeVecesQuePediUnaPelicula);
         cantidadDeVecesQuePediUnaPelicula++;
 
-        /*
-        int i;
-        for(i=0;i<250;i++)
-            for (String peliculaYa: peliculaYaJugada) {
-                if(peliculaYa.equals(pelicula)) {
-                    pelicula = peliculaC.getPelicula();
-                }else {
-                    i=250;
-                    break;
-                }
-            }*/
+        while(yaSalio()){
+            buscarPelicula();
+        }
+
         mostrarResultado();
 
     }
 
+
+    public void buscarPelicula() {
+
+        pelicula = peliculaC.getPelicula(cantidadDeVecesQuePediUnaPelicula);
+        cantidadDeVecesQuePediUnaPelicula++;
+
+    }
+
+    public boolean yaSalio(){
+            for (String check : peliculaYaJugada) {
+                if (check.equals(pelicula)) {
+                    return true;
+                }
+            }
+            
+        peliculaYaJugada.add(pelicula);
+        return false;
+    }
 
     //---------------- Mostrar puntaje y equipo en la pantalla --------------------
 
@@ -169,10 +181,11 @@ public class MainActivity extends AppCompatActivity {
         nombre = equipoActual.getNombre();
         textNombre.setText(nombre);
 
+
         TextView PeliculaV = findViewById(R.id.PeliculaSelect);
         PeliculaV.setText(pelicula);
-
     }
+
 
 
 
@@ -247,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void startTimer() {
-        CountDownTimer countDownTimer = new CountDownTimer(timeLeftInMiliseconds, 1000) {
+        countDownTimer = new CountDownTimer(timeLeftInMiliseconds, 1000) {
 
             @Override
             public void onTick(long millisUntilFinished) {
@@ -264,6 +277,8 @@ public class MainActivity extends AppCompatActivity {
 
         }.start();
     }
+
+
 
 
     public void updateTimer(){
@@ -324,6 +339,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void Acierto() {
+
+        if(countDownTimer != null) {
+            countDownTimer.cancel();
+            countDownTimer = null;
+        }
+
         Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
 
         AcertoONo.putExtra("equipo1",equipo1.getNombre());
@@ -341,6 +362,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Acierto(View view) {
+
+        if(countDownTimer != null) {
+            countDownTimer.cancel();
+            countDownTimer = null;
+        }
+
         Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
 
         AcertoONo.putExtra("equipo1",equipo1.getNombre());
