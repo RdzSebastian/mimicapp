@@ -30,7 +30,7 @@
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Equipo jugando"
+                android:text="@string/equipoJugando"
                 android:textColor="@android:color/white" />
 
             <TextView
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:text="Equipo X"
+                android:text="@string/equipoX"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
@@ -58,7 +58,7 @@
                 android:id="@+id/Equipo1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Equipo1"
+                android:text="@string/equipo1"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -70,7 +70,7 @@
                 android:id="@+id/puntos1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
+                android:text="@string/puntajeInicial"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -88,7 +88,7 @@
                 android:id="@+id/Equipo2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Equipo2"
+                android:text="@string/equipo2"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -100,7 +100,7 @@
                 android:id="@+id/puntos2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
+                android:text="@string/puntajeInicial"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -131,25 +131,19 @@
         android:background="@color/colorAccent"
         android:orientation="vertical"
         android:id="@id/cambio"
+        android:gravity="center_horizontal|center"
         android:layout_below="@+id/r1">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:gravity="center_horizontal|center"
-            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/cambio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:onClick="cambioDeEquipo"
-                android:text="cambio de equipo"
+                android:text="@string/cambioDeEquipo"
                 android:textSize="14sp" />
 
-        </LinearLayout>
 
 
     </LinearLayout>
@@ -190,14 +184,14 @@
 
 
             <Button
-                android:id="@+id/buttonTime"
+                android:id="@+id/buttonEmpezar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:onClick="startTimer"
-                android:text="Empezar"/>
+                android:text="@string/empezar"/>
 
             <TextView
                 android:id="@+id/tiempo"
@@ -205,21 +199,20 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:text="1:00"
+                android:text="@string/time"
                 android:textColor="@android:color/white"
                 android:textSize="36sp" />
 
 
             <Button
-                android:id="@+id/buttonTime2"
+                android:id="@+id/buttonAcerto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:onClick="Acierto"
-                android:text="Acerto"
-                android:layout_alignParentLeft="true" />
+                android:text="@string/acerto" />
 
 
 
@@ -236,7 +229,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="buscarPelicula"
-                android:text="Pelicula" />
+                android:text="@string/pelicula" />
 
             <android.support.v4.widget.Space
                 android:layout_width="40dp"
@@ -247,7 +240,7 @@
                 android:id="@+id/PeliculaSelect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pelicula"
+                android:text="@string/peliculaElegida"
                 android:textColor="@android:color/white"
                 android:textSize="24sp" />
 
@@ -279,25 +272,18 @@
         android:background="@color/colorAccent"
         android:orientation="vertical"
         android:layout_below="@+id/r3"
-        android:gravity="center_vertical"
+        android:gravity="center_horizontal|center"
         >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal|center">
 
             <Button
                 android:id="@+id/button8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="reseteaContador"
-                android:text="Reiniciar Partida"
+                android:text="@string/reiniciar"
                 android:textSize="12sp" />
 
         </LinearLayout>
-
-    </LinearLayout>
 
 </RelativeLayout>

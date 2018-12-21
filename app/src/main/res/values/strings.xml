@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">mimicApp</string>
+    <string name="equipoJugando">Equipo jugando</string>
+    <string name="equipoX">EquipoX</string>
+    <string name="equipo1">Equipo1</string>
+    <string name="equipo2">Equipo2</string>
+    <string name="cambioDeEquipo">cambio de equipo</string>
+    <string name="puntajeInicial">0</string>
+    <string name="empezar">empezar</string>
+    <string name="time">1:00</string>
+    <string name="acerto">acerto</string>
+    <string name="pelicula">pelicula</string>
+    <string name="peliculaElegida">Pelicula</string>
+    <string name="reiniciar">reiniciar partida</string>
 </resources>

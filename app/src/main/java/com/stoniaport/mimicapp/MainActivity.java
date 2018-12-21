@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     String nombre;
     String pelicula;
     int cantidadDeVecesQuePediUnaPelicula;
-    ArrayList <String> peliculaYaJugada = new ArrayList<>();
+    ArrayList<String> peliculaYaJugada = new ArrayList<>();
 
     Equipo equipo1 = new Equipo("Equipo 1", 1, 0);
     Equipo equipo2 = new Equipo("Equipo 2", 2, 0);
@@ -45,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
         puntos = 0;
         mostrarResultado();
 
-        cantidadDeVecesQuePediUnaPelicula=0;
+        cantidadDeVecesQuePediUnaPelicula = 0;
+
+        pelicula="null";
 
     }
 
@@ -56,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Bundle datos = getIntent().getExtras();
 
-        if(datos != null){
+        if (datos != null) {
 
 
             String equipo1String = datos.getString("equipo1");
@@ -76,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
             boolean acerto = datos.getBoolean("acerto");
 
-            if(acerto){
+            if (acerto) {
                 peliculaYaJugada.add(pelicula);
             }
 
@@ -84,14 +86,13 @@ public class MainActivity extends AppCompatActivity {
             String equipoActualString = datos.getString("equipoActual");
 
             if (equipoActualString != null) {
-                if(equipoActualString.equals(equipo1String)){
-                        equipoActual = equipo1;
-                        cambioDeEquipo();
-                    }
-                    else{
-                        equipoActual = equipo2;
-                        cambioDeEquipo();
-                    }
+                if (equipoActualString.equals(equipo1String)) {
+                    equipoActual = equipo1;
+                    cambioDeEquipo();
+                } else {
+                    equipoActual = equipo2;
+                    cambioDeEquipo();
+                }
             }
             mostrarResultado();
         }
@@ -106,9 +107,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
     //------------ Va a buscar la peli al metodo de la class ----------------
 
 
@@ -116,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         pelicula = peliculaC.getPelicula(cantidadDeVecesQuePediUnaPelicula);
         cantidadDeVecesQuePediUnaPelicula++;
 
-        while(yaSalio()){
+        while (yaSalio()) {
             buscarPelicula();
         }
 
@@ -132,19 +130,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public boolean yaSalio(){
-            for (String check : peliculaYaJugada) {
-                if (check.equals(pelicula)) {
-                    return true;
-                }
+    public boolean yaSalio() {
+        for (String check : peliculaYaJugada) {
+            if (check.equals(pelicula)) {
+                return true;
             }
+        }
 
         peliculaYaJugada.add(pelicula);
         return false;
     }
 
     //---------------- Mostrar puntaje y equipo en la pantalla --------------------
-
 
 
     public void mostrarResultado() {
@@ -177,34 +174,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
     //--------------------Cambio de equipo------------------------------------
 
 
     public void cambioDeEquipo(View Vista) {
 
-        if(equipo1.getNombre().equals(equipoActual.getNombre())) {
+        if (equipo1.getNombre().equals(equipoActual.getNombre())) {
             equipoActual = equipo2;
-        }
-        else {
-            equipoActual=equipo1;
+        } else {
+            equipoActual = equipo1;
         }
         mostrarResultado();
     }
 
     public void cambioDeEquipo() {
-        if(equipo1.getNombre().equals(equipoActual.getNombre())) {
+        if (equipo1.getNombre().equals(equipoActual.getNombre())) {
             equipoActual = equipo2;
-        }
-        else {
-            equipoActual=equipo1;
+        } else {
+            equipoActual = equipo1;
         }
         mostrarResultado();
     }
-
-
 
 
     //------------------------ Restart juego ---------------------------------------------
@@ -222,7 +212,6 @@ public class MainActivity extends AppCompatActivity {
         });
         dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialogo1, int id) {
-                cancelar();
             }
         });
         dialogo1.show();
@@ -239,8 +228,22 @@ public class MainActivity extends AppCompatActivity {
         mostrarResultado();
     }
 
-    public void cancelar() {
-        finish();
+
+
+
+    //--------------------------Apreto Empezar sin pelicula----------------------------------
+
+    public void noElegioPelicula() {
+        AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
+        dialogo1.setTitle("No elegiste una pelicula");
+        dialogo1.setCancelable(false);
+        dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo1, int id) {
+            }
+        });
+
+        dialogo1.show();
+
     }
 
 
@@ -249,22 +252,25 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void startTimer(View view) {
-        countDownTimer = new CountDownTimer(timeLeftInMiliseconds, 1000) {
+        if(pelicula.equals("null")){
+            noElegioPelicula();
+        }else {
+            countDownTimer = new CountDownTimer(timeLeftInMiliseconds, 1000) {
 
-            @Override
-            public void onTick(long millisUntilFinished) {
-                timeLeftInMiliseconds = millisUntilFinished;
-                updateTimer();
-            }
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    timeLeftInMiliseconds = millisUntilFinished;
+                    updateTimer();
+                }
 
-            @Override
-            public void onFinish() {
-                countDownText.setText("1:00");
-                timeLeftInMiliseconds= 60000;
-                Acierto();
-            }
+                @Override
+                public void onFinish() {
+                    timeLeftInMiliseconds = 60000;
+                    Acierto();
+                }
 
-        }.start();
+            }.start();
+        }
     }
 
 
@@ -351,23 +357,28 @@ public class MainActivity extends AppCompatActivity {
 
     public void Acierto(View view) {
 
-        if(countDownTimer != null) {
-            countDownTimer.cancel();
-            countDownTimer = null;
+        if(pelicula.equals("null")){
+            noElegioPelicula();
+        }else {
+
+
+            if (countDownTimer != null) {
+                countDownTimer.cancel();
+                countDownTimer = null;
+            }
+
+            Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
+
+            AcertoONo.putExtra("equipo1", equipo1.getNombre());
+            AcertoONo.putExtra("puntos1", equipo1.getPuntos());
+
+            AcertoONo.putExtra("equipo2", equipo2.getNombre());
+            AcertoONo.putExtra("puntos2", equipo2.getPuntos());
+
+            AcertoONo.putExtra("equipoActual", equipoActual.getNombre());
+            AcertoONo.putExtra("pelicula", pelicula);
+            startActivity(AcertoONo);
         }
-
-        Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
-
-        AcertoONo.putExtra("equipo1",equipo1.getNombre());
-        AcertoONo.putExtra("puntos1",equipo1.getPuntos());
-
-        AcertoONo.putExtra("equipo2",equipo2.getNombre());
-        AcertoONo.putExtra("puntos2",equipo2.getPuntos());
-
-        AcertoONo.putExtra("equipoActual", equipoActual.getNombre());
-        AcertoONo.putExtra("pelicula", pelicula);
-        startActivity(AcertoONo);
-
     }
 }
 
