@@ -38,26 +38,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Button countDownButton;
         setContentView(R.layout.activity_main);
 
         countDownText = findViewById(R.id.tiempo);
-        countDownButton = findViewById(R.id.buttonTime);
 
         puntos = 0;
         mostrarResultado();
 
         cantidadDeVecesQuePediUnaPelicula=0;
 
-        countDownButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startTimer();
-            }
-        });
-
     }
-
 
 
     //-------------- OnResume (cuando vienen de otra activity -----------------
@@ -148,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             }
-            
+
         peliculaYaJugada.add(pelicula);
         return false;
     }
@@ -255,11 +245,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
     //--------------------------------Timer----------------------------------------------
 
 
-    public void startTimer() {
+    public void startTimer(View view) {
         countDownTimer = new CountDownTimer(timeLeftInMiliseconds, 1000) {
 
             @Override
@@ -277,7 +266,6 @@ public class MainActivity extends AppCompatActivity {
 
         }.start();
     }
-
 
 
 
