@@ -7,7 +7,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -21,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
     int cantidadDeVecesQuePediUnaPelicula;
     ArrayList<String> peliculaYaJugada = new ArrayList<>();
 
-    Equipo equipo1 = new Equipo("Equipo 1", 1, 0);
-    Equipo equipo2 = new Equipo("Equipo 2", 2, 0);
+    Equipo equipo1 = new Equipo("Equipo 1", 0);
+    Equipo equipo2 = new Equipo("Equipo 2", 0);
     Equipo equipoActual = equipo1;
 
     Pelicula peliculaC = new Pelicula();
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         cantidadDeVecesQuePediUnaPelicula = 0;
 
-        pelicula="null";
+        pelicula="";
 
     }
 
@@ -171,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView PeliculaV = findViewById(R.id.PeliculaSelect);
         PeliculaV.setText(pelicula);
+
     }
 
 
@@ -225,8 +225,13 @@ public class MainActivity extends AppCompatActivity {
         equipoActual = equipo1;
         pelicula = "";
 
+        if (countDownTimer != null) {
+            restartTimmer();
+        }
+
         mostrarResultado();
     }
+
 
 
 
@@ -252,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void startTimer(View view) {
-        if(pelicula.equals("null")){
+        if(pelicula.equals("")){
             noElegioPelicula();
         }else {
             countDownTimer = new CountDownTimer(timeLeftInMiliseconds, 1000) {
@@ -289,6 +294,14 @@ public class MainActivity extends AppCompatActivity {
         countDownText.setText(timeLeftText);
     }
 
+
+    public void restartTimmer(){
+        countDownTimer.cancel();
+        countDownTimer = null;
+        timeLeftInMiliseconds = 60000;
+        updateTimer();
+
+    }
 
 
     //-------Almacena datos si doy vuelta la pantalla o si la pongo en segundo plano---------------
@@ -335,8 +348,7 @@ public class MainActivity extends AppCompatActivity {
     public void Acierto() {
 
         if(countDownTimer != null) {
-            countDownTimer.cancel();
-            countDownTimer = null;
+            restartTimmer();
         }
 
         Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
@@ -357,14 +369,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void Acierto(View view) {
 
-        if(pelicula.equals("null")){
+        if(pelicula.equals("")){
             noElegioPelicula();
         }else {
 
 
             if (countDownTimer != null) {
-                countDownTimer.cancel();
-                countDownTimer = null;
+                restartTimmer();
             }
 
             Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);

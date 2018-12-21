@@ -12,4 +12,7 @@
     <string name="pelicula">pelicula</string>
     <string name="peliculaElegida">Pelicula</string>
     <string name="reiniciar">reiniciar partida</string>
+    <string name="acertoONo">Acerto?</string>
+    <string name="si">si</string>
+    <string name="no">no</string>
 </resources>

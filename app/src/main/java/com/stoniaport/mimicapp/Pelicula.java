@@ -1,22 +1,13 @@
 package com.stoniaport.mimicapp;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Pelicula{
+class Pelicula{
 
 
-    ArrayList<String> ultimas15 = new ArrayList<String>();
+    private ArrayList<String> ultimas15 = new ArrayList<>();
 
 
     String[] pelicula = {
@@ -179,10 +170,10 @@ public class Pelicula{
 
     };
 
-    public Pelicula() {
+    Pelicula() {
     }
 
-    public String getPelicula(int cantidadDeVecesQuePediUnaPelicula) {
+    String getPelicula(int cantidadDeVecesQuePediUnaPelicula) {
 
         Random number = new Random();
         int i = number.nextInt(pelicula.length + 1);

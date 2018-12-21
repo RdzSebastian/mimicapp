@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 public class AcertoONo extends AppCompatActivity {
 
@@ -24,15 +23,17 @@ public class AcertoONo extends AppCompatActivity {
         setContentView(R.layout.activity_acerto_ono);
 
         Bundle estado = getIntent().getExtras();
-        equipo1 = estado.getString("equipo1");
-        puntos1 = estado.getInt("puntos1");
+        if (estado != null) {
+            equipo1 = estado.getString("equipo1");
 
-        equipo2 = estado.getString("equipo2");
-        puntos2 = estado.getInt("puntos2");
+            puntos1 = estado.getInt("puntos1");
 
-        equipoActual = estado.getString("equipoActual");
-        pelicula = estado.getString("pelicula");
+            equipo2 = estado.getString("equipo2");
+            puntos2 = estado.getInt("puntos2");
 
+            equipoActual = estado.getString("equipoActual");
+            pelicula = estado.getString("pelicula");
+        }
         cambioDeEquipo = true;
 
     }
