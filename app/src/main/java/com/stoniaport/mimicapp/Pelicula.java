@@ -176,10 +176,8 @@ class Pelicula{
     String getPelicula(int cantidadDeVecesQuePediUnaPelicula) {
 
         Random number = new Random();
-        int i = number.nextInt(pelicula.length + 1);
-
-
-        String peliculaSeleccionada = pelicula[i];
+        int j = number.nextInt(pelicula.length + 1);
+        String peliculaSeleccionada = pelicula[j];
 
         boolean cambio;
 
@@ -188,8 +186,8 @@ class Pelicula{
             for (String check : ultimas15) {
                 if (check.equals(peliculaSeleccionada)) {
 
-                    i = number.nextInt(pelicula.length + 1);
-                    peliculaSeleccionada = pelicula[i];
+                    j = number.nextInt(pelicula.length + 1);
+                    peliculaSeleccionada = pelicula[j];
                     cambio = true;
                     break;
                 }
@@ -199,7 +197,7 @@ class Pelicula{
 
         if (cantidadDeVecesQuePediUnaPelicula>16) {
             ultimas15.remove(0);
-            for (i = 1;i<15;i++){
+            for (int i = 1;i<15;i++){
 
                 String p = ultimas15.get(i);
                 ultimas15.add(i-1, p);
