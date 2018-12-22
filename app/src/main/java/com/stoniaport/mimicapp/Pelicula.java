@@ -188,7 +188,7 @@ class Pelicula{
             for (String check : ultimas15) {
                 if (check.equals(peliculaSeleccionada)) {
 
-                    i = (int) (Math.random() * 160) + 1;
+                    i = number.nextInt(pelicula.length + 1);
                     peliculaSeleccionada = pelicula[i];
                     cambio = true;
                     break;

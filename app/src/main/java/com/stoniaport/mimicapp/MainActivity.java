@@ -177,16 +177,6 @@ public class MainActivity extends AppCompatActivity {
     //--------------------Cambio de equipo------------------------------------
 
 
-    public void cambioDeEquipo(View Vista) {
-
-        if (equipo1.getNombre().equals(equipoActual.getNombre())) {
-            equipoActual = equipo2;
-        } else {
-            equipoActual = equipo1;
-        }
-        mostrarResultado();
-    }
-
     public void cambioDeEquipo() {
         if (equipo1.getNombre().equals(equipoActual.getNombre())) {
             equipoActual = equipo2;
