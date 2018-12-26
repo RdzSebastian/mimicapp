@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">mimicApp</string>
     <string name="equipoJugando">Equipo jugando</string>
-    <string name="equipoX">EquipoX</string>
+    <string name="equipoX">Equipo 1</string>
     <string name="equipo1">Equipo1</string>
     <string name="equipo2">Equipo2</string>
     <string name="cambioDeEquipo">cambio de equipo</string>
