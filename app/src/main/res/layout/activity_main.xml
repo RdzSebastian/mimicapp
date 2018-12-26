@@ -125,7 +125,7 @@
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="240dp"
         android:background="@color/colorAccent"
         android:orientation="vertical"
         android:layout_below="@+id/r1"
@@ -147,6 +147,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:onClick="startTimer"
+                android:background="@drawable/custom_button"
                 android:text="@string/empezar"/>
 
             <TextView
@@ -168,6 +169,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:onClick="Acierto"
+                android:background="@drawable/custom_button"
                 android:text="@string/acerto" />
 
 
@@ -185,6 +187,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="buscarPelicula"
+                android:padding="10dp"                android:background="@drawable/custom_button"
                 android:text="@string/pelicula" />
 
             <android.support.v4.widget.Space
@@ -232,13 +235,15 @@
         >
 
 
-            <Button
-                android:id="@+id/button8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="reseteaContador"
-                android:text="@string/reiniciar"
-                android:textSize="12sp" />
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@drawable/custom_button"
+            android:onClick="reseteaContador"
+            android:text="@string/reiniciar"
+            android:textSize="12sp" />
 
         </LinearLayout>
 
