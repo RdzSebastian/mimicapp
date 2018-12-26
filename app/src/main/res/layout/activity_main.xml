@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="@color/colorAccent"
+        android:background="@drawable/custom_background"
         android:orientation="vertical"
         android:id="@+id/equipoTop">
 
@@ -107,28 +107,11 @@
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:id="@id/r1"
-        android:layout_below="@+id/equipoTop">
-
-
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="@android:color/white"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:background="@color/colorAccent"
+        android:background="@drawable/custom_background"
         android:orientation="vertical"
-        android:layout_below="@+id/r1"
+        android:layout_below="@+id/equipoTop"
+        android:layout_marginTop="20dp"
         android:id="@+id/peli">
 
         <RelativeLayout
@@ -209,28 +192,13 @@
     </LinearLayout>
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:layout_below="@+id/peli"
-        android:id="@+id/r3">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:background="@android:color/white"/>
-
-    </LinearLayout>
-
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorAccent"
+        android:background="@drawable/custom_background"
         android:orientation="vertical"
-        android:layout_below="@+id/r3"
+        android:layout_below="@+id/peli"
+        android:layout_marginTop="20dp"
         android:gravity="center_horizontal|center"
         >
 

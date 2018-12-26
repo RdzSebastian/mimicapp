@@ -10,7 +10,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
+            android:background="@drawable/custom_background"
             android:orientation="vertical"
             android:gravity="center_horizontal|center"
             android:paddingLeft="40dp"
@@ -37,8 +37,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="60dp"
-        android:background="@color/colorAccent"
         android:gravity="center_vertical|center"
+        android:background="@drawable/custom_background"
         >
 
         <Button
