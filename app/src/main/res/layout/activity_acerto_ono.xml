@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,59 +8,73 @@
     tools:context=".AcertoONo"
     android:gravity="center_vertical|center">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/custom_background"
-            android:orientation="vertical"
-            android:gravity="center_horizontal|center"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            >
-        <TextView
-            android:id="@+id/textView"
-            android:textColor="@android:color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/acertoONo"
-            android:textSize="36sp" />
 
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/BackGAcertONo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backacertoono"/>
 
-    <android.support.v4.widget.Space
-        android:layout_width="0dp"
-        android:layout_height="60dp"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="60dp"
-        android:gravity="center_vertical|center"
-        android:background="@drawable/custom_background"
-        >
+        tools:context=".AcertoONo"
+        android:paddingTop="20dp"
+        android:gravity="center_vertical|center">
 
-        <Button
-            android:id="@+id/Si"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/custom_button"
-            android:onClick="Si"
-            android:text="@string/si" />
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal|center"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                >
+            <TextView
+                android:id="@+id/textView"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/acertoONo"
+                android:textSize="36sp" />
+
+        </LinearLayout>
 
         <android.support.v4.widget.Space
             android:layout_width="0dp"
-            android:layout_height="80dp"/>
+            android:layout_height="60dp"/>
 
-        <Button
-            android:id="@+id/No"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/custom_button"
-            android:onClick="No"
-            android:text="@string/no" />
-    </LinearLayout>
+            android:orientation="vertical"
+            android:padding="60dp"
+            android:gravity="center_vertical|center"
 
-</LinearLayout>
+            >
+
+            <Button
+                android:id="@+id/Si"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/tick"
+                android:onClick="Si"/>
+
+            <android.support.v4.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="80dp"/>
+
+            <Button
+                android:id="@+id/No"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/incorrect"
+                android:onClick="No"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

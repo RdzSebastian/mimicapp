@@ -1,86 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="20dp"
-    android:background="@android:color/white">
+    android:layout_height="match_parent">
 
+
+    <ImageView
+        android:id="@+id/BackG"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/back" />
 
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/peli"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/custom_background"
-        android:orientation="vertical"
-        android:id="@+id/equipoTop">
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|center_horizontal">
+
+        <Button
+            android:id="@+id/buttonEmpezar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="startTimer"
+            android:background="@drawable/custom_button"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="25dp"
+        android:orientation="vertical">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal|center"
+            android:paddingTop="20dp"
+            android:orientation="vertical"
+            android:id="@+id/equipoTop">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:paddingRight="30dip"
+                android:paddingEnd="30dip"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/avocadoEquipo1"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:srcCompat="@drawable/avocado" />
+
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <TextView
+                    android:id="@+id/Equipo1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/equipo1"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp" />
+
+                <android.support.v4.widget.Space
+                    android:layout_width="20dip"
+                    android:layout_height="0dip"/>
+
+                <TextView
+                    android:id="@+id/puntos1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/puntajeInicial"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingRight="30dip"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            >
+            android:paddingEnd="30dip">
 
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/equipoJugando"
-                android:textColor="@android:color/white" />
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/nombre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="@string/equipoX"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
+                    <ImageView
+                        android:id="@+id/avocadoEquipo2"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:srcCompat="@drawable/avocado" />
 
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:gravity="center_horizontal|center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/Equipo1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/equipo1"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
-
-            <android.support.v4.widget.Space
-                android:layout_width="20dp"
-                android:layout_height="0dp"/>
-
-            <TextView
-                android:id="@+id/puntos1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/puntajeInicial"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:gravity="center_horizontal|center"
-            android:orientation="horizontal">
-
+                </android.support.v7.widget.LinearLayoutCompat>
             <TextView
                 android:id="@+id/Equipo2"
                 android:layout_width="wrap_content"
@@ -102,117 +127,109 @@
                 android:textSize="20sp" />
 
         </LinearLayout>
-    </LinearLayout>
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:background="@drawable/custom_background"
-        android:orientation="vertical"
-        android:layout_below="@+id/equipoTop"
-        android:layout_marginTop="20dp"
-        android:id="@+id/peli">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp">
-
-
-            <Button
-                android:id="@+id/buttonEmpezar"
+            <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:onClick="startTimer"
-                android:background="@drawable/custom_button"
-                android:text="@string/empezar"/>
-
-            <TextView
-                android:id="@+id/tiempo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:text="@string/time"
-                android:textColor="@android:color/white"
-                android:textSize="36sp" />
+                android:layout_height="wrap_content">
 
 
-            <Button
-                android:id="@+id/buttonAcerto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:onClick="Acierto"
-                android:background="@drawable/custom_button"
-                android:text="@string/acerto" />
-
-
-
-        </RelativeLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp">
-
-            <Button
-                android:id="@+id/pelicula"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="buscarPelicula"
-                android:padding="10dp"                android:background="@drawable/custom_button"
-                android:text="@string/pelicula" />
-
-            <android.support.v4.widget.Space
-                android:layout_width="40dp"
-                android:layout_height="0dp"/>
-
-
-            <TextView
-                android:id="@+id/PeliculaSelect"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/peliculaElegida"
-                android:textColor="@android:color/white"
-                android:textSize="24sp" />
+                <ImageView
+                    android:id="@+id/unicorn"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    app:srcCompat="@drawable/unicorn" />
+            </android.support.v7.widget.LinearLayoutCompat>
 
         </LinearLayout>
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="bottom">
+
+            <LinearLayout
+                android:id="@+id/tiempoLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingBottom="20dip">
+
+
+                <TextView
+                    android:id="@+id/tiempo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time"
+                    android:textColor="@android:color/white"
+                    android:textSize="36sp" />
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dip"
+                android:paddingRight="10dp"
+                >
+
+                <android.support.v4.widget.Space
+                    android:layout_width="30dip"
+                    android:layout_height="0dp"/>
+
+                <Button
+                    android:id="@+id/pelicula"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="buscarPelicula"
+                    android:background="@drawable/custom_buttonclip"/>
+
+
+                <android.support.v4.widget.Space
+                    android:layout_width="30dip"
+                    android:layout_height="0dp"/>
+
+
+                <TextView
+                    android:id="@+id/PeliculaSelect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/peliculaElegida"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
     </LinearLayout>
 
+
+<!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/custom_background"
-        android:orientation="vertical"
         android:layout_below="@+id/peli"
-        android:layout_marginTop="20dp"
-        android:gravity="center_horizontal|center"
-        >
+        android:layout_marginTop="359dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
 
         <Button
             android:id="@+id/button8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             android:background="@drawable/custom_button"
             android:onClick="reseteaContador"
+            android:padding="10dp"
             android:text="@string/reiniciar"
             android:textSize="12sp" />
 
-        </LinearLayout>
+    </LinearLayout>
+-->
 
 </RelativeLayout>

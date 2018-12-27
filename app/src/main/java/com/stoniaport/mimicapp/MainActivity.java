@@ -2,11 +2,16 @@ package com.stoniaport.mimicapp;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.media.Image;
 import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
 
     CountDownTimer countDownTimer;
 
+    Button customButton;
+    ImageView selectorDeEquipo1;
+    ImageView selectorDeEquipo2;
+
+    boolean jugando;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +59,15 @@ public class MainActivity extends AppCompatActivity {
 
         pelicula="";
 
+        customButton = findViewById(R.id.buttonEmpezar);
+        customButton.setSelected(false);
+        jugando=false;
+
+        selectorDeEquipo1 = findViewById(R.id.avocadoEquipo1);
+        selectorDeEquipo1.setVisibility(View.VISIBLE);
+
+        selectorDeEquipo2 = findViewById(R.id.avocadoEquipo2);
+        selectorDeEquipo2.setVisibility(View.INVISIBLE);
     }
 
 
@@ -162,13 +183,33 @@ public class MainActivity extends AppCompatActivity {
         String nombreEquipo2String = Integer.toString(nombrePuntos2);
         textPuntos2.setText(nombreEquipo2String);
 
-        TextView textNombre = findViewById(R.id.nombre);
-        nombre = equipoActual.getNombre();
-        textNombre.setText(nombre);
-
 
         TextView PeliculaV = findViewById(R.id.PeliculaSelect);
         PeliculaV.setText(pelicula);
+
+        if(equipoActual.getNombre().equals(equipo1.getNombre())){
+            textEquipo1.setTypeface(null,Typeface.BOLD);
+            textEquipo2.setTypeface(Typeface.SANS_SERIF);
+
+            selectorDeEquipo1 = findViewById(R.id.avocadoEquipo1);
+            selectorDeEquipo1.setVisibility(View.VISIBLE);
+
+            selectorDeEquipo2 = findViewById(R.id.avocadoEquipo2);
+            selectorDeEquipo2.setVisibility(View.INVISIBLE);
+
+
+        }else{
+            textEquipo1.setTypeface(Typeface.SANS_SERIF);
+            textEquipo2.setTypeface(null,Typeface.BOLD);
+
+            selectorDeEquipo1 = findViewById(R.id.avocadoEquipo1);
+            selectorDeEquipo1.setVisibility(View.INVISIBLE);
+
+            selectorDeEquipo2 = findViewById(R.id.avocadoEquipo2);
+            selectorDeEquipo2.setVisibility(View.VISIBLE);
+
+
+            }
 
     }
 
@@ -249,21 +290,31 @@ public class MainActivity extends AppCompatActivity {
         if(pelicula.equals("")){
             noElegioPelicula();
         }else {
-            countDownTimer = new CountDownTimer(timeLeftInMiliseconds, 1000) {
+            if(jugando) {
+                Acierto();
+                jugando=false;
+            }
+            else {
+                customButton.setSelected(true);
+                jugando=true;
 
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    timeLeftInMiliseconds = millisUntilFinished;
-                    updateTimer();
-                }
+                countDownTimer = new CountDownTimer(timeLeftInMiliseconds, 1000) {
 
-                @Override
-                public void onFinish() {
-                    timeLeftInMiliseconds = 60000;
-                    Acierto();
-                }
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        timeLeftInMiliseconds = millisUntilFinished;
+                        updateTimer();
+                    }
 
-            }.start();
+                    @Override
+                    public void onFinish() {
+                        timeLeftInMiliseconds = 60000;
+                        Acierto();
+                    }
+
+
+                }.start();
+            }
         }
     }
 
@@ -355,32 +406,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(AcertoONo);
 
     }
-
-    public void Acierto(View view) {
-
-        if(pelicula.equals("")){
-            noElegioPelicula();
-        }else {
-
-
-            if (countDownTimer != null) {
-                restartTimmer();
-            }
-
-            Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
-
-            AcertoONo.putExtra("equipo1", equipo1.getNombre());
-            AcertoONo.putExtra("puntos1", equipo1.getPuntos());
-
-            AcertoONo.putExtra("equipo2", equipo2.getNombre());
-            AcertoONo.putExtra("puntos2", equipo2.getPuntos());
-
-            AcertoONo.putExtra("equipoActual", equipoActual.getNombre());
-            AcertoONo.putExtra("pelicula", pelicula);
-            startActivity(AcertoONo);
-        }
-    }
-
     //----------------------- No se puede usar boton atras ----------------------
 
     @Override
