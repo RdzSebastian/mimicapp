@@ -3,7 +3,6 @@ package com.stoniaport.mimicapp;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.media.Image;
 import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,26 +10,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    int puntos;
-    String nombre;
-    String pelicula;
-    int cantidadDeVecesQuePediUnaPelicula;
-    ArrayList<String> peliculaYaJugada = new ArrayList<>();
+
 
     Equipo equipo1 = new Equipo("Equipo 1", 0);
     Equipo equipo2 = new Equipo("Equipo 2", 0);
     Equipo equipoActual = equipo1;
 
     Pelicula peliculaC = new Pelicula();
+    String pelicula;
+    int cantidadDeVecesQuePediUnaPelicula;
+
+    private ArrayList<String> peliculaYaJugada = new ArrayList<>();
+    private ArrayList<String> ultimas15 = new ArrayList<>();
 
     private TextView countDownText;
 
@@ -45,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     boolean jugando;
 
 
+    //------------------------- OnCreate --------------------------------------------
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
         countDownText = findViewById(R.id.tiempo);
 
-        puntos = 0;
         mostrarResultado();
 
         cantidadDeVecesQuePediUnaPelicula = 0;
@@ -72,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     //-------------- OnResume (cuando vienen de otra activity -----------------
+
     @Override
     public void onResume() {
         super.onResume();
@@ -94,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
 
             pelicula = datos.getString("pelicula");
 
+            ultimas15 = datos.getStringArrayList("ultimas15");
+            peliculaC.setUltimas15(ultimas15);
+
+            peliculaYaJugada = datos.getStringArrayList("peliculaYaJugada");
+            cantidadDeVecesQuePediUnaPelicula = datos.getInt("cantidadDeVecesQuePediUnaPelicula");
 
             boolean acerto = datos.getBoolean("acerto");
 
@@ -118,27 +123,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //-----------  On pause ----------------------------------
-    @Override
-    public void onPause() {
-        super.onPause();
-
-    }
-
-
     //------------ Va a buscar la peli al metodo de la class ----------------
 
-
-    public void buscarPelicula(View Vista) {
-        pelicula = peliculaC.getPelicula(cantidadDeVecesQuePediUnaPelicula);
-        cantidadDeVecesQuePediUnaPelicula++;
-
+    public void buscarPelicula(View Vista) throws Exception {
+        try {
+            buscarPelicula();
+        }catch (Exception e){
+            System.out.println("error buscando peli");
+        }
         while (yaSalio()) {
             buscarPelicula();
         }
+        ultimas15.clear();
+        ultimas15 = peliculaC.getUltimas15();
 
         mostrarResultado();
-
     }
 
 
@@ -229,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
 
     //------------------------ Restart juego ---------------------------------------------
 
-
+/*
     public void reseteaContador(View Vista) {
         AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
         dialogo1.setTitle("Importante");
@@ -263,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+*/
 
 
     //--------------------------Apreto Empezar sin pelicula----------------------------------
@@ -354,7 +353,9 @@ public class MainActivity extends AppCompatActivity {
         estado.putString("equipo2",equipo2.getNombre());
         estado.putInt("equipo2",equipo2.getPuntos());
 
-       estado.putString("equipoActual",equipoActual.getNombre());
+        estado.putString("equipoActual",equipoActual.getNombre());
+
+        estado.putString("pelicula", pelicula);
 
         super.onSaveInstanceState(estado);
     }
@@ -369,6 +370,8 @@ public class MainActivity extends AppCompatActivity {
 
         equipo2.setNombre(estado.getString("equipo2"));
         equipo2.setPuntos(estado.getInt("equipo2"));
+
+        pelicula = estado.getString("pelicula");
 
 
         if(equipo1.getNombre().equals(estado.getString("equipoActual"))) {
@@ -385,6 +388,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    //----------------------- Boton Stop o Termino el tiempo --------------------------------------
+
     public void Acierto() {
 
         if(countDownTimer != null) {
@@ -400,7 +405,12 @@ public class MainActivity extends AppCompatActivity {
         AcertoONo.putExtra("puntos2",equipo2.getPuntos());
 
         AcertoONo.putExtra("equipoActual", equipoActual.getNombre());
+
         AcertoONo.putExtra("pelicula", pelicula);
+
+        AcertoONo.putExtra("ultimas15",ultimas15);
+        AcertoONo.putExtra("peliculaYaJugada",peliculaYaJugada);
+        AcertoONo.putExtra("cantidadDeVecesQuePediUnaPelicula",cantidadDeVecesQuePediUnaPelicula);
 
 
         startActivity(AcertoONo);

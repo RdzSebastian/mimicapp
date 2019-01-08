@@ -55,7 +55,7 @@ class Pelicula{
             "Deep blue sea",
             "Deja vu",
             "Doctor Strange",
-            "Dentro del laberitno",
+            "Dentro del laberinto",
             "Desafio total",
             "Duro de matar",
             "E.T",
@@ -186,19 +186,28 @@ class Pelicula{
     Pelicula() {
     }
 
+
+    ArrayList<String> getUltimas15() {
+        return ultimas15;
+    }
+
+    public void setUltimas15(ArrayList<String> ultimas15) {
+        this.ultimas15 = ultimas15;
+    }
+
     String getPelicula(int cantidadDeVecesQuePediUnaPelicula) {
 
         Random number = new Random();
         int j = number.nextInt(pelicula.length + 1);
         String peliculaSeleccionada = pelicula[j];
 
+        try {
         boolean cambio;
 
         do {
             cambio = false;
             for (String check : ultimas15) {
                 if (check.equals(peliculaSeleccionada)) {
-
                     j = number.nextInt(pelicula.length + 1);
                     peliculaSeleccionada = pelicula[j];
                     cambio = true;
@@ -208,18 +217,22 @@ class Pelicula{
         } while (cambio);
 
 
-        if (cantidadDeVecesQuePediUnaPelicula>16) {
-            ultimas15.remove(0);
-            for (int i = 1;i<15;i++){
-
-                String p = ultimas15.get(i);
-                ultimas15.add(i-1, p);
-
-            }
-            ultimas15.add(15,peliculaSeleccionada);
+        }catch (Exception e){
+            System.out.println("Error Ultimas");
         }
-        else {
-            ultimas15.add(peliculaSeleccionada);
+
+        try {
+            if (cantidadDeVecesQuePediUnaPelicula > 16) {
+                System.out.println("Pelicula eliminar de la lista " + ultimas15.get(0));
+                ultimas15.remove(0);
+                ultimas15.add(peliculaSeleccionada);
+                System.out.println("Pelicula proxima a eliminar " + ultimas15.get(0));
+            } else {
+                ultimas15.add(peliculaSeleccionada);
+            }
+            System.out.println("Pelicula nueva de la lista " + ultimas15.get(15));
+        }catch (Exception e){
+            System.out.println("Error Pelicula");
         }
 
     return peliculaSeleccionada;

@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.ArrayList;
+
 public class AcertoONo extends AppCompatActivity {
 
     String equipo1;
@@ -13,6 +15,10 @@ public class AcertoONo extends AppCompatActivity {
     int puntos2;
     String equipoActual;
     String pelicula;
+    int cantidadDeVecesQuePediUnaPelicula;
+    private ArrayList<String> peliculaYaJugada = new ArrayList<>();
+    private ArrayList<String> ultimas15 = new ArrayList<>();
+
 
     boolean cambioDeEquipo;
 
@@ -33,6 +39,11 @@ public class AcertoONo extends AppCompatActivity {
 
             equipoActual = estado.getString("equipoActual");
             pelicula = estado.getString("pelicula");
+
+            ultimas15 = estado.getStringArrayList("ultimas15");
+            peliculaYaJugada = estado.getStringArrayList("peliculaYaJugada");
+            cantidadDeVecesQuePediUnaPelicula = estado.getInt("cantidadDeVecesQuePediUnaPelicula");
+
         }
         cambioDeEquipo = true;
 
@@ -48,14 +59,7 @@ public class AcertoONo extends AppCompatActivity {
         }
 
         Intent acerto = new Intent(AcertoONo.this, MainActivity.class);
-
-        acerto.putExtra("equipo1",equipo1);
-        acerto.putExtra("puntos1",puntos1);
-        acerto.putExtra("equipo2",equipo2);
-        acerto.putExtra("puntos2",puntos2);
-
-        acerto.putExtra("equipoActual", equipoActual);
-        acerto.putExtra("pelicula",pelicula);
+        intent(acerto);
 
         acerto.putExtra("acerto",true);
 
@@ -64,16 +68,25 @@ public class AcertoONo extends AppCompatActivity {
 
     public void No(View v) {
         Intent noAcerto = new Intent(AcertoONo.this, MainActivity.class);
-        noAcerto.putExtra("equipo1",equipo1);
-        noAcerto.putExtra("puntos1",puntos1);
-        noAcerto.putExtra("equipo2",equipo2);
-        noAcerto.putExtra("puntos2",puntos2);
-
-        noAcerto.putExtra("equipoActual", equipoActual);
-        noAcerto.putExtra("pelicula",pelicula);
+        intent(noAcerto);
 
         noAcerto.putExtra("acerto",false);
 
         startActivity(noAcerto);
+    }
+
+    public void intent(Intent intent){
+        intent.putExtra("equipo1",equipo1);
+        intent.putExtra("puntos1",puntos1);
+        intent.putExtra("equipo2",equipo2);
+        intent.putExtra("puntos2",puntos2);
+
+        intent.putExtra("equipoActual", equipoActual);
+        intent.putExtra("pelicula",pelicula);
+
+        intent.putExtra("ultimas15",ultimas15);
+        intent.putExtra("peliculaYaJugada",peliculaYaJugada);
+        intent.putExtra("cantidadDeVecesQuePediUnaPelicula",cantidadDeVecesQuePediUnaPelicula);
+
     }
 }
