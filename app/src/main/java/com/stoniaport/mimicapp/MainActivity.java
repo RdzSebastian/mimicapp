@@ -125,12 +125,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         while (peliculaC.yaSalio(pelicula)) {
-            System.out.println("TRUE");
-            System.out.println("TRUE");
-            System.out.println("TRUE");
+            //System.out.println("TRUE");
             buscarPelicula();
         }
-        System.out.println("FALSE");
+        //System.out.println("FALSE");
         mostrarResultado();
     }
 

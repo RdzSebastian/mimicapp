@@ -219,19 +219,19 @@ class Pelicula{
 
     void peliculaYaJugada(String peliculaYaJugada){
         this.peliculaYaJugada.add(peliculaYaJugada);
-        System.out.println("Agregar a la lista de jugadas" + peliculaYaJugada);
+        //System.out.println("Agregar a la lista de jugadas" + peliculaYaJugada);
     }
 
 
     //---------------------- Pelicula que ya se jugo ----------------------------
 
      boolean yaSalio(String peliculaSeleccionada) {
-         System.out.println("Lista de jugadas ");
+         //System.out.println("Lista de jugadas ");
         for (String check : peliculaYaJugada) {
 
             if (check.equals(peliculaSeleccionada)) {
-                System.out.println("lista "+check);
-                System.out.println("nueva= "+peliculaSeleccionada);
+                //System.out.println("lista "+check);
+                //System.out.println("nueva= "+peliculaSeleccionada);
                 return true;
             }
         }
@@ -243,9 +243,7 @@ class Pelicula{
     //--------------------- Logica de Busqueda de peliculas ---------------------
 
     String getPelicula() {
-        //System.out.println("");
         //System.out.println(cantidadDeVecesQuePediUnaPelicula);
-        //System.out.println("");
         String peliculaSeleccionada = peliculaSeleccionada();
         boolean cambio;
 
@@ -254,7 +252,6 @@ class Pelicula{
             for (String check : ultimas15) {
                 //System.out.print(check);
                 if (check.equals(peliculaSeleccionada)) {
-                    //System.out.println("");
                     //System.out.println("FILTRO " + peliculaSeleccionada);
                     peliculaSeleccionada = peliculaSeleccionada();
                     cambio = true;
@@ -272,8 +269,7 @@ class Pelicula{
         } else {
             ultimas15.add(peliculaSeleccionada);
         }
-        //System.out.println("");
-        System.out.println("Pelicula nueva" + peliculaSeleccionada);
+        //System.out.println("Pelicula nueva" + peliculaSeleccionada);
 
         cantidadDeVecesQuePediUnaPelicula++;
         //System.out.println(cantidadDeVecesQuePediUnaPelicula);
