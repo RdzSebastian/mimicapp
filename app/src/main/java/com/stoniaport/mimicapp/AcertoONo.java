@@ -15,10 +15,7 @@ public class AcertoONo extends AppCompatActivity {
     int puntos2;
     String equipoActual;
     String pelicula;
-    int cantidadDeVecesQuePediUnaPelicula;
-    private ArrayList<String> peliculaYaJugada = new ArrayList<>();
-    private ArrayList<String> ultimas15 = new ArrayList<>();
-
+    Pelicula peliculaC = new Pelicula();
 
     boolean cambioDeEquipo;
 
@@ -40,9 +37,9 @@ public class AcertoONo extends AppCompatActivity {
             equipoActual = estado.getString("equipoActual");
             pelicula = estado.getString("pelicula");
 
-            ultimas15 = estado.getStringArrayList("ultimas15");
-            peliculaYaJugada = estado.getStringArrayList("peliculaYaJugada");
-            cantidadDeVecesQuePediUnaPelicula = estado.getInt("cantidadDeVecesQuePediUnaPelicula");
+            peliculaC.setUltimas15(estado.getStringArrayList("ultimas15"));
+            peliculaC.setPeliculaYaJugada(estado.getStringArrayList("peliculaYaJugada"));
+            peliculaC.setCantidadDeVecesQuePediUnaPelicula(estado.getInt("cantidadDeVecesQuePediUnaPelicula"));
 
         }
         cambioDeEquipo = true;
@@ -84,9 +81,9 @@ public class AcertoONo extends AppCompatActivity {
         intent.putExtra("equipoActual", equipoActual);
         intent.putExtra("pelicula",pelicula);
 
-        intent.putExtra("ultimas15",ultimas15);
-        intent.putExtra("peliculaYaJugada",peliculaYaJugada);
-        intent.putExtra("cantidadDeVecesQuePediUnaPelicula",cantidadDeVecesQuePediUnaPelicula);
+        intent.putExtra("ultimas15",peliculaC.getUltimas15());
+        intent.putExtra("peliculaYaJugada",peliculaC.getPeliculaYaJugada());
+        intent.putExtra("cantidadDeVecesQuePediUnaPelicula",peliculaC.getCantidadDeVecesQuePediUnaPelicula());
 
     }
 }

@@ -8,6 +8,8 @@ class Pelicula{
 
 
     private ArrayList<String> ultimas15 = new ArrayList<>();
+    private ArrayList<String> peliculaYaJugada = new ArrayList<>();
+    int cantidadDeVecesQuePediUnaPelicula=0;
 
 
     String[] pelicula = {
@@ -186,30 +188,75 @@ class Pelicula{
     Pelicula() {
     }
 
+    // --------------------- Getter Setter ----------------------------
 
     ArrayList<String> getUltimas15() {
         return ultimas15;
     }
 
-    public void setUltimas15(ArrayList<String> ultimas15) {
+    void setUltimas15(ArrayList<String> ultimas15) {
+
         this.ultimas15 = ultimas15;
     }
 
-    String getPelicula(int cantidadDeVecesQuePediUnaPelicula) {
+    ArrayList<String> getPeliculaYaJugada() {
+        return peliculaYaJugada;
+    }
 
-        Random number = new Random();
-        int j = number.nextInt(pelicula.length + 1);
-        String peliculaSeleccionada = pelicula[j];
+    void setPeliculaYaJugada(ArrayList<String> peliculaYaJugada) {
+        this.peliculaYaJugada = peliculaYaJugada;
+    }
 
-        try {
+    int getCantidadDeVecesQuePediUnaPelicula() {
+        return cantidadDeVecesQuePediUnaPelicula;
+    }
+
+    void setCantidadDeVecesQuePediUnaPelicula(int cantidadDeVecesQuePediUnaPelicula) {
+        this.cantidadDeVecesQuePediUnaPelicula = cantidadDeVecesQuePediUnaPelicula;
+    }
+
+    //--------------------------------- Acerto ----------------------------------
+
+    void peliculaYaJugada(String peliculaYaJugada){
+        this.peliculaYaJugada.add(peliculaYaJugada);
+        System.out.println("Agregar a la lista de jugadas" + peliculaYaJugada);
+    }
+
+
+    //---------------------- Pelicula que ya se jugo ----------------------------
+
+     boolean yaSalio(String peliculaSeleccionada) {
+         System.out.println("Lista de jugadas ");
+        for (String check : peliculaYaJugada) {
+
+            if (check.equals(peliculaSeleccionada)) {
+                System.out.println("lista "+check);
+                System.out.println("nueva= "+peliculaSeleccionada);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    //--------------------- Logica de Busqueda de peliculas ---------------------
+
+    String getPelicula() {
+        //System.out.println("");
+        //System.out.println(cantidadDeVecesQuePediUnaPelicula);
+        //System.out.println("");
+        String peliculaSeleccionada = peliculaSeleccionada();
         boolean cambio;
 
         do {
             cambio = false;
             for (String check : ultimas15) {
+                //System.out.print(check);
                 if (check.equals(peliculaSeleccionada)) {
-                    j = number.nextInt(pelicula.length + 1);
-                    peliculaSeleccionada = pelicula[j];
+                    //System.out.println("");
+                    //System.out.println("FILTRO " + peliculaSeleccionada);
+                    peliculaSeleccionada = peliculaSeleccionada();
                     cambio = true;
                     break;
                 }
@@ -217,25 +264,28 @@ class Pelicula{
         } while (cambio);
 
 
-        }catch (Exception e){
-            System.out.println("Error Ultimas");
-        }
+        if (cantidadDeVecesQuePediUnaPelicula > 14) {
 
-        try {
-            if (cantidadDeVecesQuePediUnaPelicula > 16) {
-                System.out.println("Pelicula eliminar de la lista " + ultimas15.get(0));
-                ultimas15.remove(0);
-                ultimas15.add(peliculaSeleccionada);
-                System.out.println("Pelicula proxima a eliminar " + ultimas15.get(0));
-            } else {
-                ultimas15.add(peliculaSeleccionada);
-            }
-            System.out.println("Pelicula nueva de la lista " + ultimas15.get(15));
-        }catch (Exception e){
-            System.out.println("Error Pelicula");
+            ultimas15.remove(0);
+            ultimas15.add(peliculaSeleccionada);
+            //System.out.println("Pelicula proxima a eliminar " + ultimas15.get(0));
+        } else {
+            ultimas15.add(peliculaSeleccionada);
         }
+        //System.out.println("");
+        System.out.println("Pelicula nueva" + peliculaSeleccionada);
 
+        cantidadDeVecesQuePediUnaPelicula++;
+        //System.out.println(cantidadDeVecesQuePediUnaPelicula);
     return peliculaSeleccionada;
+    }
+
+
+
+    private String peliculaSeleccionada(){
+        Random number = new Random();
+        int j = number.nextInt(pelicula.length + 1);
+    return  pelicula[j];
     }
 
 

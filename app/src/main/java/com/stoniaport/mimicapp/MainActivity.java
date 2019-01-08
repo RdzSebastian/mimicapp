@@ -25,10 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
     Pelicula peliculaC = new Pelicula();
     String pelicula;
-    int cantidadDeVecesQuePediUnaPelicula;
-
-    private ArrayList<String> peliculaYaJugada = new ArrayList<>();
-    private ArrayList<String> ultimas15 = new ArrayList<>();
 
     private TextView countDownText;
 
@@ -53,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
         countDownText = findViewById(R.id.tiempo);
 
         mostrarResultado();
-
-        cantidadDeVecesQuePediUnaPelicula = 0;
 
         pelicula="";
 
@@ -94,16 +88,14 @@ public class MainActivity extends AppCompatActivity {
 
             pelicula = datos.getString("pelicula");
 
-            ultimas15 = datos.getStringArrayList("ultimas15");
-            peliculaC.setUltimas15(ultimas15);
-
-            peliculaYaJugada = datos.getStringArrayList("peliculaYaJugada");
-            cantidadDeVecesQuePediUnaPelicula = datos.getInt("cantidadDeVecesQuePediUnaPelicula");
+            peliculaC.setUltimas15(datos.getStringArrayList("ultimas15"));
+            peliculaC.setPeliculaYaJugada(datos.getStringArrayList("peliculaYaJugada"));
+            peliculaC.setCantidadDeVecesQuePediUnaPelicula(datos.getInt("cantidadDeVecesQuePediUnaPelicula"));
 
             boolean acerto = datos.getBoolean("acerto");
 
             if (acerto) {
-                peliculaYaJugada.add(pelicula);
+                peliculaC.peliculaYaJugada(pelicula);
             }
 
 
@@ -125,39 +117,30 @@ public class MainActivity extends AppCompatActivity {
 
     //------------ Va a buscar la peli al metodo de la class ----------------
 
-    public void buscarPelicula(View Vista) throws Exception {
+    public void buscarPelicula(View Vista){
         try {
             buscarPelicula();
-        }catch (Exception e){
-            System.out.println("error buscando peli");
+            }catch (Exception e){
+                System.out.println("error buscando peli");
         }
-        while (yaSalio()) {
+
+        while (peliculaC.yaSalio(pelicula)) {
+            System.out.println("TRUE");
+            System.out.println("TRUE");
+            System.out.println("TRUE");
             buscarPelicula();
         }
-        ultimas15.clear();
-        ultimas15 = peliculaC.getUltimas15();
-
+        System.out.println("FALSE");
         mostrarResultado();
     }
 
 
     public void buscarPelicula() {
 
-        pelicula = peliculaC.getPelicula(cantidadDeVecesQuePediUnaPelicula);
-        cantidadDeVecesQuePediUnaPelicula++;
-
+        pelicula = peliculaC.getPelicula();
     }
 
-    public boolean yaSalio() {
-        for (String check : peliculaYaJugada) {
-            if (check.equals(pelicula)) {
-                return true;
-            }
-        }
 
-        peliculaYaJugada.add(pelicula);
-        return false;
-    }
 
     //---------------- Mostrar puntaje y equipo en la pantalla --------------------
 
@@ -225,44 +208,6 @@ public class MainActivity extends AppCompatActivity {
         mostrarResultado();
     }
 
-
-    //------------------------ Restart juego ---------------------------------------------
-
-/*
-    public void reseteaContador(View Vista) {
-        AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
-        dialogo1.setTitle("Importante");
-        dialogo1.setMessage("¿ Quiere reiniciar el juego?");
-        dialogo1.setCancelable(false);
-        dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogo1, int id) {
-                aceptar();
-            }
-        });
-        dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogo1, int id) {
-            }
-        });
-        dialogo1.show();
-
-    }
-
-    public void aceptar() {
-        equipoActual.setPuntos(0);
-        cambioDeEquipo();
-        equipoActual.setPuntos(0);
-        equipoActual = equipo1;
-        pelicula = "";
-
-        if (countDownTimer != null) {
-            restartTimmer();
-        }
-
-        mostrarResultado();
-    }
-
-
-*/
 
 
     //--------------------------Apreto Empezar sin pelicula----------------------------------
@@ -408,9 +353,9 @@ public class MainActivity extends AppCompatActivity {
 
         AcertoONo.putExtra("pelicula", pelicula);
 
-        AcertoONo.putExtra("ultimas15",ultimas15);
-        AcertoONo.putExtra("peliculaYaJugada",peliculaYaJugada);
-        AcertoONo.putExtra("cantidadDeVecesQuePediUnaPelicula",cantidadDeVecesQuePediUnaPelicula);
+        AcertoONo.putExtra("ultimas15",peliculaC.getUltimas15());
+        AcertoONo.putExtra("peliculaYaJugada",peliculaC.getPeliculaYaJugada());
+        AcertoONo.putExtra("cantidadDeVecesQuePediUnaPelicula",peliculaC.getCantidadDeVecesQuePediUnaPelicula());
 
 
         startActivity(AcertoONo);
