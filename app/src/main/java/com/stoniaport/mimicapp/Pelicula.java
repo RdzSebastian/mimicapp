@@ -83,7 +83,6 @@ class Pelicula{
             "Fight club",
             "Feliz dia de tu muerte",
             "GhostRider",
-            "Garganta profunda",
             "Hannibal",
             "Hill House",
             "Han Solo",
