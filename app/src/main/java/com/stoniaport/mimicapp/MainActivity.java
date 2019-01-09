@@ -8,8 +8,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -48,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
         countDownText = findViewById(R.id.tiempo);
 
-        mostrarResultado();
+        pelicula="Presiona para obtener pelicula";
 
-        pelicula="";
+        mostrarResultado();
 
         customButton = findViewById(R.id.buttonEmpezar);
         customButton.setSelected(false);
@@ -121,14 +123,15 @@ public class MainActivity extends AppCompatActivity {
         try {
             buscarPelicula();
             }catch (Exception e){
-                System.out.println("error buscando peli");
+                System.out.println("Error buscando pelicula");
         }
 
         while (peliculaC.yaSalio(pelicula)) {
-            //System.out.println("TRUE");
             buscarPelicula();
         }
-        //System.out.println("FALSE");
+
+        marginPeliculaSelect(pelicula);
+
         mostrarResultado();
     }
 
@@ -136,6 +139,20 @@ public class MainActivity extends AppCompatActivity {
     public void buscarPelicula() {
 
         pelicula = peliculaC.getPelicula();
+    }
+
+    //---- Dependiendo la cantidad de caracteres, cambia el marginTop en la parte visual ------
+
+    void marginPeliculaSelect(String pelicula){
+        if(pelicula.length()>20){
+            TextView peliculaSelect = findViewById(R.id.PeliculaSelect);
+            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) peliculaSelect.getLayoutParams();
+            mlp.setMargins(0, 0, 0, 0);
+        }else{
+            TextView peliculaSelect = findViewById(R.id.PeliculaSelect);
+            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) peliculaSelect.getLayoutParams();
+            mlp.setMargins(0, 35, 0, 0);
+        }
     }
 
 

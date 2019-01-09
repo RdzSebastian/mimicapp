@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,226 +9,167 @@
         android:id="@+id/BackG"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@drawable/back" />
+        android:background="@drawable/back"
+        android:contentDescription="@string/image" />
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/peli"
+        android:id="@+id/equipoTop"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical|center_horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="20dp">
 
-        <Button
-            android:id="@+id/buttonEmpezar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="startTimer"
-            android:background="@drawable/custom_button"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:padding="25dp"
-        android:orientation="vertical">
-
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:orientation="vertical"
-            android:id="@+id/equipoTop">
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/avocadoEquipo1"
+                android:layout_width="35dp"
+                android:layout_height="50dp"
+                android:background="@drawable/avocado"
+                android:contentDescription="@string/image"
+                android:layout_toLeftOf="@+id/Equipo1"
+                android:layout_toStartOf="@+id/Equipo1" />
 
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/Equipo1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:gravity="center"
-                android:paddingRight="30dip"
-                android:paddingEnd="30dip"
-                android:orientation="horizontal">
-
-                <android.support.v7.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/avocadoEquipo1"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        app:srcCompat="@drawable/avocado" />
-
-                </android.support.v7.widget.LinearLayoutCompat>
-
-                <TextView
-                    android:id="@+id/Equipo1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/equipo1"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp" />
-
-                <android.support.v4.widget.Space
-                    android:layout_width="20dip"
-                    android:layout_height="0dip"/>
-
-                <TextView
-                    android:id="@+id/puntos1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/puntajeInicial"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp" />
-
-            </LinearLayout>
+                android:layout_margin="10dp"
+                android:text="@string/equipo1"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:layout_centerHorizontal="true" />
 
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/puntos1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/puntajeInicial"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:layout_toRightOf="@+id/Equipo1"
+                android:layout_toEndOf="@+id/Equipo1"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingRight="30dip"
-            android:orientation="horizontal"
-            android:paddingEnd="30dip">
+            android:layout_marginTop="20dp">
 
-                <android.support.v7.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/avocadoEquipo2"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        app:srcCompat="@drawable/avocado" />
+            <ImageView
+                android:id="@+id/avocadoEquipo2"
+                android:layout_width="35dp"
+                android:layout_height="50dp"
+                android:background="@drawable/avocado"
+                android:contentDescription="@string/image"
+                android:layout_toLeftOf="@+id/Equipo2"
+                android:layout_toStartOf="@+id/Equipo2"
+                />
 
-                </android.support.v7.widget.LinearLayoutCompat>
             <TextView
                 android:id="@+id/Equipo2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="@string/equipo2"
                 android:textColor="@android:color/white"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:layout_centerHorizontal="true"
+                />
 
-            <android.support.v4.widget.Space
-                android:layout_width="20dp"
-                android:layout_height="0dp"/>
 
             <TextView
                 android:id="@+id/puntos2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="@string/puntajeInicial"
                 android:textColor="@android:color/white"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:layout_toRightOf="@+id/Equipo2"
+                android:layout_toEndOf="@+id/Equipo2" />
 
-        </LinearLayout>
-
-            <android.support.v7.widget.LinearLayoutCompat
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+        </RelativeLayout>
 
 
-                <ImageView
-                    android:id="@+id/unicorn"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    app:srcCompat="@drawable/unicorn" />
-            </android.support.v7.widget.LinearLayoutCompat>
+        <ImageView
+            android:id="@+id/unicorn"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/unicorn"
+            android:contentDescription="@string/image" />
 
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="bottom">
-
-            <LinearLayout
-                android:id="@+id/tiempoLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:paddingBottom="20dip">
-
-
-                <TextView
-                    android:id="@+id/tiempo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/time"
-                    android:textColor="@android:color/white"
-                    android:textSize="36sp" />
-
-
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="20dip"
-                android:paddingRight="10dp"
-                >
-
-                <android.support.v4.widget.Space
-                    android:layout_width="30dip"
-                    android:layout_height="0dp"/>
-
-                <Button
-                    android:id="@+id/pelicula"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="buscarPelicula"
-                    android:background="@drawable/custom_buttonclip"/>
-
-
-                <android.support.v4.widget.Space
-                    android:layout_width="30dip"
-                    android:layout_height="0dp"/>
-
-
-                <TextView
-                    android:id="@+id/PeliculaSelect"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/peliculaElegida"
-                    android:textColor="@android:color/white"
-                    android:textSize="24sp" />
-            </LinearLayout>
-
-
-        </LinearLayout>
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/buttonEmpezar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/custom_button"
+        android:onClick="startTimer" />
 
-<!--
     <LinearLayout
+        android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/peli"
-        android:layout_marginTop="359dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="35dp">
+
+            <TextView
+                android:id="@+id/tiempo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time"
+                android:textColor="@android:color/white"
+                android:textSize="36sp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"/>
 
 
-        <Button
-            android:id="@+id/button8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/custom_button"
-            android:onClick="reseteaContador"
-            android:padding="10dp"
-            android:text="@string/reiniciar"
-            android:textSize="12sp" />
+            <TextView
+                android:id="@+id/PeliculaSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/peliculaElegida"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:layout_toRightOf="@id/botonpelicula"
+                android:layout_toEndOf="@id/botonpelicula"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="0dp"
+                android:layout_below="@+id/tiempo"
+                android:layout_marginStart="30dp" />
 
+
+            <Button
+                android:id="@+id/botonpelicula"
+                android:layout_width="70dp"
+                android:layout_height="65dp"
+                android:onClick="buscarPelicula"
+                android:background="@drawable/custom_buttonclip"
+                android:layout_below="@+id/tiempo"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="10dp" />
+        </RelativeLayout>
     </LinearLayout>
--->
-
 </RelativeLayout>
