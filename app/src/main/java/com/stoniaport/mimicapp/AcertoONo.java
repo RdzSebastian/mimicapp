@@ -9,11 +9,11 @@ import java.util.ArrayList;
 
 public class AcertoONo extends AppCompatActivity {
 
-    String equipo1;
-    int puntos1;
-    String equipo2;
-    int puntos2;
+
+    Equipo equipo1 = new Equipo();
+    Equipo equipo2 = new Equipo();
     String equipoActual;
+
     String pelicula;
     Pelicula peliculaC = new Pelicula();
 
@@ -27,16 +27,15 @@ public class AcertoONo extends AppCompatActivity {
 
         Bundle estado = getIntent().getExtras();
         if (estado != null) {
-            equipo1 = estado.getString("equipo1");
+            equipo1.setNombre(estado.getString("equipo1"));
+            equipo1.setPuntos(estado.getInt("puntos1"));
 
-            puntos1 = estado.getInt("puntos1");
-
-            equipo2 = estado.getString("equipo2");
-            puntos2 = estado.getInt("puntos2");
+            equipo2.setNombre(estado.getString("equipo2"));
+            equipo2.setPuntos(estado.getInt("puntos2"));
 
             equipoActual = estado.getString("equipoActual");
-            pelicula = estado.getString("pelicula");
 
+            pelicula = estado.getString("pelicula");
             peliculaC.setUltimas15(estado.getStringArrayList("ultimas15"));
             peliculaC.setPeliculaYaJugada(estado.getStringArrayList("peliculaYaJugada"));
             peliculaC.setCantidadDeVecesQuePediUnaPelicula(estado.getInt("cantidadDeVecesQuePediUnaPelicula"));
@@ -48,11 +47,11 @@ public class AcertoONo extends AppCompatActivity {
 
     public void Si(View v) {
 
-        if(equipoActual.equals(equipo1)) {
-            puntos1++;
+        if(equipoActual.equals(equipo1.getNombre())) {
+            equipo1.acerto();
         }
         else{
-            puntos2++;
+            equipo2.acerto();
         }
 
         Intent acerto = new Intent(AcertoONo.this, MainActivity.class);
@@ -73,10 +72,10 @@ public class AcertoONo extends AppCompatActivity {
     }
 
     public void intent(Intent intent){
-        intent.putExtra("equipo1",equipo1);
-        intent.putExtra("puntos1",puntos1);
-        intent.putExtra("equipo2",equipo2);
-        intent.putExtra("puntos2",puntos2);
+        intent.putExtra("equipo1",equipo1.getNombre());
+        intent.putExtra("puntos1",equipo1.getPuntos());
+        intent.putExtra("equipo2",equipo2.getNombre());
+        intent.putExtra("puntos2",equipo2.getPuntos());
 
         intent.putExtra("equipoActual", equipoActual);
         intent.putExtra("pelicula",pelicula);

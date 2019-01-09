@@ -81,7 +81,7 @@ class Pelicula{
             "El padrino",
             "Extraño mundo de jack",
             "Fight club",
-            "Feliz dia de tu muerte",
+            "Feliz dia de tu  muerte",
             "GhostRider",
             "Hannibal",
             "Hill House",

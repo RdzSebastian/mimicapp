@@ -3,6 +3,7 @@ package com.stoniaport.mimicapp;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,11 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     CountDownTimer countDownTimer;
 
     Button customButton;
+    MediaPlayer mp;
     ImageView selectorDeEquipo1;
     ImageView selectorDeEquipo2;
 
@@ -52,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         pelicula="Presiona para obtener pelicula";
 
-        mostrarResultado();
+        mp = MediaPlayer.create(this,R.raw.silbato);
 
         customButton = findViewById(R.id.buttonEmpezar);
         customButton.setSelected(false);
@@ -63,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
         selectorDeEquipo2 = findViewById(R.id.avocadoEquipo2);
         selectorDeEquipo2.setVisibility(View.INVISIBLE);
+
+        mostrarResultado();
     }
 
 
@@ -76,17 +76,11 @@ public class MainActivity extends AppCompatActivity {
         if (datos != null) {
 
 
-            String equipo1String = datos.getString("equipo1");
-            equipo1.setNombre(equipo1String);
+            equipo1.setNombre(datos.getString("equipo1"));
+            equipo1.setPuntos(datos.getInt("puntos1"));
 
-            int puntos1 = datos.getInt("puntos1");
-            equipo1.setPuntos(puntos1);
-
-            String equipo2String = datos.getString("equipo2");
-            equipo2.setNombre(equipo2String);
-
-            int puntos2 = datos.getInt("puntos2");
-            equipo2.setPuntos(puntos2);
+            equipo2.setNombre(datos.getString("equipo2"));
+            equipo2.setPuntos(datos.getInt("puntos2"));
 
             pelicula = datos.getString("pelicula");
 
@@ -104,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             String equipoActualString = datos.getString("equipoActual");
 
             if (equipoActualString != null) {
-                if (equipoActualString.equals(equipo1String)) {
+                if (equipoActualString.equals(datos.getString("equipo1"))) {
                     equipoActual = equipo1;
                     cambioDeEquipo();
                 } else {
@@ -129,8 +123,6 @@ public class MainActivity extends AppCompatActivity {
         while (peliculaC.yaSalio(pelicula)) {
             buscarPelicula();
         }
-
-        marginPeliculaSelect(pelicula);
 
         mostrarResultado();
     }
@@ -161,9 +153,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void mostrarResultado() {
+        marginPeliculaSelect(pelicula);
+
         TextView textEquipo1 = findViewById(R.id.Equipo1);
-        String nombreEquipo1 = equipo1.getNombre();
-        textEquipo1.setText(nombreEquipo1);
+        textEquipo1.setText(equipo1.getNombre());
 
         TextView textPuntos1 = findViewById(R.id.puntos1);
         int nombrePuntos1 = equipo1.getPuntos();
@@ -172,8 +165,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         TextView textEquipo2 = findViewById(R.id.Equipo2);
-        String nombreEquipo2 = equipo2.getNombre();
-        textEquipo2.setText(nombreEquipo2);
+        textEquipo2.setText(equipo2.getNombre());
 
         TextView textPuntos2 = findViewById(R.id.puntos2);
         int nombrePuntos2 = equipo2.getPuntos();
@@ -246,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void startTimer(View view) {
-        if(pelicula.equals("")){
+        if(pelicula.equals("Presiona para obtener pelicula")){
             noElegioPelicula();
         }else {
             if(jugando) {
@@ -268,6 +260,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onFinish() {
                         timeLeftInMiliseconds = 60000;
+                        mp.start();
                         Acierto();
                     }
 

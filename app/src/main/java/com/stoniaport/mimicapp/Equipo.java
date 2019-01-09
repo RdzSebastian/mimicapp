@@ -10,6 +10,9 @@ public class Equipo {
         this.puntos = puntos;
     }
 
+    public Equipo() {
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -27,4 +30,7 @@ public class Equipo {
         this.puntos = puntos;
     }
 
+    void acerto(){
+        puntos++;
+    }
 }
