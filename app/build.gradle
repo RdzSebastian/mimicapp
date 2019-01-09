@@ -6,7 +6,7 @@ android {
         applicationId "com.stoniaport.mimicapp"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 9
+        versionCode 10
         versionName "1.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
