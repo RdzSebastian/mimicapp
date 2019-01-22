@@ -2,7 +2,8 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:keepScreenOn="true">
 
 
     <ImageView
@@ -149,15 +150,17 @@
                 android:id="@+id/PeliculaSelect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/tiempo"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_toEndOf="@id/botonpelicula"
+                android:layout_toRightOf="@id/botonpelicula"
                 android:text="@string/peliculaElegida"
                 android:textColor="@android:color/white"
-                android:textSize="24sp"
-                android:layout_toRightOf="@id/botonpelicula"
-                android:layout_toEndOf="@id/botonpelicula"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="0dp"
-                android:layout_below="@+id/tiempo"
-                android:layout_marginStart="30dp" />
+                android:textSize="24sp" />
 
 
             <Button

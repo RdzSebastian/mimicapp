@@ -6,17 +6,16 @@ import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.app.Activity;
 
-public class MainActivity extends AppCompatActivity {
-
-
+public class MainActivity extends Activity {
 
     Equipo equipo1 = new Equipo("Equipo 1", 0);
     Equipo equipo2 = new Equipo("Equipo 2", 0);
@@ -37,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     ImageView selectorDeEquipo2;
 
     boolean jugando;
-
 
     //------------------------- OnCreate --------------------------------------------
 
@@ -62,7 +60,16 @@ public class MainActivity extends AppCompatActivity {
         selectorDeEquipo2 = findViewById(R.id.avocadoEquipo2);
         selectorDeEquipo2.setVisibility(View.INVISIBLE);
 
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         mostrarResultado();
+    }
+
+    //-------------- OnDestroy (cuando cerras la app) -----------------
+
+
+    protected void onDestroy(){
+        super.onDestroy();
     }
 
 
@@ -136,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
     //---- Dependiendo la cantidad de caracteres, cambia el marginTop en la parte visual ------
 
     void marginPeliculaSelect(String pelicula){
-        if(pelicula.length()>20){
+        if(pelicula.length()>18){
             TextView peliculaSelect = findViewById(R.id.PeliculaSelect);
             ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) peliculaSelect.getLayoutParams();
             mlp.setMargins(0, 0, 0, 0);
