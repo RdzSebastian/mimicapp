@@ -17,9 +17,8 @@ import android.app.Activity;
 
 public class MainActivity extends Activity {
 
-    Equipo equipo1 = new Equipo("Equipo 1", 0);
-    Equipo equipo2 = new Equipo("Equipo 2", 0);
-    Equipo equipoActual = equipo1;
+    Equipo equipo1 = new Equipo("Equipo 1", 0, true);
+    Equipo equipo2 = new Equipo("Equipo 2", 0, false);
 
     Pelicula pelicula = new Pelicula();
 
@@ -84,9 +83,11 @@ public class MainActivity extends Activity {
 
             equipo1.setNombre(datos.getString("equipo1"));
             equipo1.setPuntos(datos.getInt("puntos1"));
+            equipo1.setTurno(datos.getBoolean("turno1"));
 
             equipo2.setNombre(datos.getString("equipo2"));
             equipo2.setPuntos(datos.getInt("puntos2"));
+            equipo2.setTurno(datos.getBoolean("turno2"));
 
             pelicula.setPelicula(datos.getString("pelicula"));
 
@@ -100,19 +101,7 @@ public class MainActivity extends Activity {
                 pelicula.peliculaYaJugada();
             }
 
-
-            String equipoActualString = datos.getString("equipoActual");
-
-            if (equipoActualString != null) {
-                if (equipoActualString.equals(datos.getString("equipo1"))) {
-                    equipoActual = equipo1;
-                    cambioDeEquipo();
-                } else {
-                    equipoActual = equipo2;
-                    cambioDeEquipo();
-                }
-            }
-            mostrarResultado();
+            cambioDeEquipo();
         }
     }
 
@@ -182,7 +171,7 @@ public class MainActivity extends Activity {
         TextView PeliculaV = findViewById(R.id.PeliculaSelect);
         PeliculaV.setText(pelicula.getPeliculaString());
 
-        if(equipoActual.getNombre().equals(equipo1.getNombre())){
+        if(equipo1.isTurno()){
             textEquipo1.setTypeface(null,Typeface.BOLD);
             textEquipo2.setTypeface(Typeface.SANS_SERIF);
 
@@ -213,10 +202,12 @@ public class MainActivity extends Activity {
 
 
     public void cambioDeEquipo() {
-        if (equipo1.getNombre().equals(equipoActual.getNombre())) {
-            equipoActual = equipo2;
+        if (equipo1.isTurno()) {
+            equipo1.setTurno(false);
+            equipo2.setTurno(true);
         } else {
-            equipoActual = equipo1;
+            equipo1.setTurno(true);
+            equipo2.setTurno(false);
         }
         mostrarResultado();
     }
@@ -312,9 +303,11 @@ public class MainActivity extends Activity {
         estado.putString("equipo2",equipo2.getNombre());
         estado.putInt("equipo2",equipo2.getPuntos());
 
-        estado.putString("equipoActual",equipoActual.getNombre());
-
         estado.putString("pelicula", pelicula.getPeliculaString());
+
+        estado.putStringArrayList("ultimas15",pelicula.getUltimas15());
+        estado.putStringArrayList("peliculaYaJugada",pelicula.getPeliculaYaJugada());
+        estado.putInt("cantidadDeVecesQuePediUnaPelicula",pelicula.getCantidadDeVecesQuePediUnaPelicula());
 
         super.onSaveInstanceState(estado);
     }
@@ -326,20 +319,18 @@ public class MainActivity extends Activity {
 
         equipo1.setNombre(estado.getString("equipo1"));
         equipo1.setPuntos(estado.getInt("equipo1"));
+        equipo1.setTurno(estado.getBoolean("turno1"));
 
         equipo2.setNombre(estado.getString("equipo2"));
         equipo2.setPuntos(estado.getInt("equipo2"));
+        equipo2.setTurno(estado.getBoolean("turno2"));
 
         pelicula.setPelicula(estado.getString("pelicula"));
 
+        pelicula.setUltimas15(estado.getStringArrayList("ultimas15"));
+        pelicula.setPeliculaYaJugada(estado.getStringArrayList("peliculaYaJugada"));
+        pelicula.setCantidadDeVecesQuePediUnaPelicula(estado.getInt("cantidadDeVecesQuePediUnaPelicula"));
 
-        if(equipo1.getNombre().equals(estado.getString("equipoActual"))) {
-            equipoActual = equipo1;
-        }
-        else {
-
-            equipoActual = equipo2;
-        }
 
         mostrarResultado();
 
@@ -359,11 +350,11 @@ public class MainActivity extends Activity {
 
         AcertoONo.putExtra("equipo1",equipo1.getNombre());
         AcertoONo.putExtra("puntos1",equipo1.getPuntos());
+        AcertoONo.putExtra("turno1",equipo1.isTurno());
 
         AcertoONo.putExtra("equipo2",equipo2.getNombre());
         AcertoONo.putExtra("puntos2",equipo2.getPuntos());
-
-        AcertoONo.putExtra("equipoActual", equipoActual.getNombre());
+        AcertoONo.putExtra("turno2",equipo2.isTurno());
 
         AcertoONo.putExtra("pelicula", pelicula.getPeliculaString());
 

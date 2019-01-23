@@ -12,7 +12,6 @@ public class AcertoONo extends AppCompatActivity {
 
     Equipo equipo1 = new Equipo();
     Equipo equipo2 = new Equipo();
-    String equipoActual;
 
     Pelicula pelicula = new Pelicula();
 
@@ -28,11 +27,12 @@ public class AcertoONo extends AppCompatActivity {
         if (estado != null) {
             equipo1.setNombre(estado.getString("equipo1"));
             equipo1.setPuntos(estado.getInt("puntos1"));
+            equipo1.setTurno(estado.getBoolean("turno1"));
 
             equipo2.setNombre(estado.getString("equipo2"));
             equipo2.setPuntos(estado.getInt("puntos2"));
+            equipo2.setTurno(estado.getBoolean("turno2"));
 
-            equipoActual = estado.getString("equipoActual");
 
             pelicula.setPelicula(estado.getString("pelicula"));
             pelicula.setUltimas15(estado.getStringArrayList("ultimas15"));
@@ -46,7 +46,7 @@ public class AcertoONo extends AppCompatActivity {
 
     public void Si(View v) {
 
-        if(equipoActual.equals(equipo1.getNombre())) {
+        if(equipo1.isTurno()) {
             equipo1.acerto();
         }
         else{
@@ -73,10 +73,12 @@ public class AcertoONo extends AppCompatActivity {
     public void intent(Intent intent){
         intent.putExtra("equipo1",equipo1.getNombre());
         intent.putExtra("puntos1",equipo1.getPuntos());
+        intent.putExtra("turno1",equipo1.isTurno());
+
         intent.putExtra("equipo2",equipo2.getNombre());
         intent.putExtra("puntos2",equipo2.getPuntos());
+        intent.putExtra("turno2",equipo2.isTurno());
 
-        intent.putExtra("equipoActual", equipoActual);
         intent.putExtra("pelicula",pelicula.getPeliculaString());
 
         intent.putExtra("ultimas15",pelicula.getUltimas15());
