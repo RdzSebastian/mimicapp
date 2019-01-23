@@ -3,11 +3,11 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.estonianport.mimicapp"
+        applicationId "com.stoniaport.mimicapp"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 11
-        versionName "1.5.6"
+        versionCode 12
+        versionName "1.5.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
