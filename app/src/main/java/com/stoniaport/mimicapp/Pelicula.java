@@ -6,13 +6,13 @@ import java.util.Random;
 
 class Pelicula{
 
-
+    private String pelicula;
     private ArrayList<String> ultimas15 = new ArrayList<>();
     private ArrayList<String> peliculaYaJugada = new ArrayList<>();
     private int cantidadDeVecesQuePediUnaPelicula=0;
 
 
-    String[] pelicula = {
+    private String[] peliculaArray = {
             "2001 Odisea en el espacio",
             "10 razones para odiarte",
             "Toy Story",
@@ -223,6 +223,16 @@ class Pelicula{
 
     // --------------------- Getter Setter ----------------------------
 
+
+    public void setPelicula(String pelicula) {
+        this.pelicula = pelicula;
+    }
+
+    String getPeliculaString(){
+        return pelicula;
+    }
+
+
     ArrayList<String> getUltimas15() {
         return ultimas15;
     }
@@ -250,19 +260,19 @@ class Pelicula{
 
     //--------------------------------- Acerto ----------------------------------
 
-    void peliculaYaJugada(String peliculaYaJugada){
-        this.peliculaYaJugada.add(peliculaYaJugada);
+    void peliculaYaJugada(){
+        this.peliculaYaJugada.add(pelicula);
         //System.out.println("Agregar a la lista de jugadas" + peliculaYaJugada);
     }
 
 
     //---------------------- Pelicula que ya se jugo ----------------------------
 
-     boolean yaSalio(String peliculaSeleccionada) {
+     boolean yaSalio() {
          //System.out.println("Lista de jugadas ");
         for (String check : peliculaYaJugada) {
 
-            if (check.equals(peliculaSeleccionada)) {
+            if (check.equals(pelicula)) {
                 //System.out.println("lista "+check);
                 //System.out.println("nueva= "+peliculaSeleccionada);
                 return true;
@@ -313,8 +323,8 @@ class Pelicula{
 
     private String peliculaSeleccionada(){
         Random number = new Random();
-        int j = number.nextInt(pelicula.length + 1);
-    return  pelicula[j];
+        int j = number.nextInt(peliculaArray.length + 1);
+    return  peliculaArray[j];
     }
 
 

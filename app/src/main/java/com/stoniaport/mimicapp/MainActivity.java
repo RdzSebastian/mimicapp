@@ -21,21 +21,20 @@ public class MainActivity extends Activity {
     Equipo equipo2 = new Equipo("Equipo 2", 0);
     Equipo equipoActual = equipo1;
 
-    Pelicula peliculaC = new Pelicula();
-    String pelicula;
+    Pelicula pelicula = new Pelicula();
 
     private TextView countDownText;
-
     private long timeLeftInMiliseconds = 60000; // 1min
-
     CountDownTimer countDownTimer;
 
     Button customButton;
+    boolean jugando;
+
     MediaPlayer mp;
+
     ImageView selectorDeEquipo1;
     ImageView selectorDeEquipo2;
 
-    boolean jugando;
 
     //------------------------- OnCreate --------------------------------------------
 
@@ -46,7 +45,7 @@ public class MainActivity extends Activity {
 
         countDownText = findViewById(R.id.tiempo);
 
-        pelicula="Presiona para obtener pelicula";
+        pelicula.setPelicula("Presiona para obtener pelicula");
 
         mp = MediaPlayer.create(this,R.raw.silbato);
 
@@ -89,16 +88,16 @@ public class MainActivity extends Activity {
             equipo2.setNombre(datos.getString("equipo2"));
             equipo2.setPuntos(datos.getInt("puntos2"));
 
-            pelicula = datos.getString("pelicula");
+            pelicula.setPelicula(datos.getString("pelicula"));
 
-            peliculaC.setUltimas15(datos.getStringArrayList("ultimas15"));
-            peliculaC.setPeliculaYaJugada(datos.getStringArrayList("peliculaYaJugada"));
-            peliculaC.setCantidadDeVecesQuePediUnaPelicula(datos.getInt("cantidadDeVecesQuePediUnaPelicula"));
+            pelicula.setUltimas15(datos.getStringArrayList("ultimas15"));
+            pelicula.setPeliculaYaJugada(datos.getStringArrayList("peliculaYaJugada"));
+            pelicula.setCantidadDeVecesQuePediUnaPelicula(datos.getInt("cantidadDeVecesQuePediUnaPelicula"));
 
             boolean acerto = datos.getBoolean("acerto");
 
             if (acerto) {
-                peliculaC.peliculaYaJugada(pelicula);
+                pelicula.peliculaYaJugada();
             }
 
 
@@ -127,7 +126,7 @@ public class MainActivity extends Activity {
                 System.out.println("Error buscando pelicula");
         }
 
-        while (peliculaC.yaSalio(pelicula)) {
+        while (pelicula.yaSalio()) {
             buscarPelicula();
         }
 
@@ -137,7 +136,7 @@ public class MainActivity extends Activity {
 
     public void buscarPelicula() {
 
-        pelicula = peliculaC.getPelicula();
+        pelicula.setPelicula(pelicula.getPelicula());
     }
 
     //---- Dependiendo la cantidad de caracteres, cambia el marginTop en la parte visual ------
@@ -160,7 +159,7 @@ public class MainActivity extends Activity {
 
 
     public void mostrarResultado() {
-        marginPeliculaSelect(pelicula);
+        marginPeliculaSelect(pelicula.getPeliculaString());
 
         TextView textEquipo1 = findViewById(R.id.Equipo1);
         textEquipo1.setText(equipo1.getNombre());
@@ -181,7 +180,7 @@ public class MainActivity extends Activity {
 
 
         TextView PeliculaV = findViewById(R.id.PeliculaSelect);
-        PeliculaV.setText(pelicula);
+        PeliculaV.setText(pelicula.getPeliculaString());
 
         if(equipoActual.getNombre().equals(equipo1.getNombre())){
             textEquipo1.setTypeface(null,Typeface.BOLD);
@@ -245,7 +244,7 @@ public class MainActivity extends Activity {
 
 
     public void startTimer(View view) {
-        if(pelicula.equals("Presiona para obtener pelicula")){
+        if(pelicula.getPeliculaString().equals("Presiona para obtener pelicula")){
             noElegioPelicula();
         }else {
             if(jugando) {
@@ -315,7 +314,7 @@ public class MainActivity extends Activity {
 
         estado.putString("equipoActual",equipoActual.getNombre());
 
-        estado.putString("pelicula", pelicula);
+        estado.putString("pelicula", pelicula.getPeliculaString());
 
         super.onSaveInstanceState(estado);
     }
@@ -331,7 +330,7 @@ public class MainActivity extends Activity {
         equipo2.setNombre(estado.getString("equipo2"));
         equipo2.setPuntos(estado.getInt("equipo2"));
 
-        pelicula = estado.getString("pelicula");
+        pelicula.setPelicula(estado.getString("pelicula"));
 
 
         if(equipo1.getNombre().equals(estado.getString("equipoActual"))) {
@@ -366,11 +365,11 @@ public class MainActivity extends Activity {
 
         AcertoONo.putExtra("equipoActual", equipoActual.getNombre());
 
-        AcertoONo.putExtra("pelicula", pelicula);
+        AcertoONo.putExtra("pelicula", pelicula.getPeliculaString());
 
-        AcertoONo.putExtra("ultimas15",peliculaC.getUltimas15());
-        AcertoONo.putExtra("peliculaYaJugada",peliculaC.getPeliculaYaJugada());
-        AcertoONo.putExtra("cantidadDeVecesQuePediUnaPelicula",peliculaC.getCantidadDeVecesQuePediUnaPelicula());
+        AcertoONo.putExtra("ultimas15",pelicula.getUltimas15());
+        AcertoONo.putExtra("peliculaYaJugada",pelicula.getPeliculaYaJugada());
+        AcertoONo.putExtra("cantidadDeVecesQuePediUnaPelicula",pelicula.getCantidadDeVecesQuePediUnaPelicula());
 
 
         startActivity(AcertoONo);
