@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.app.Activity;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -33,6 +34,7 @@ public class MainActivity extends Activity {
 
     ImageView selectorDeEquipo1;
     ImageView selectorDeEquipo2;
+    Toast backtoast;
 
 
     //------------------------- OnCreate --------------------------------------------
@@ -360,8 +362,14 @@ public class MainActivity extends Activity {
     }
     //----------------------- No se puede usar boton atras ----------------------
 
-    @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
+            if(backtoast!=null && backtoast.getView().getWindowToken()!=null) {
+                moveTaskToBack(true);
+            } else {
+                backtoast = Toast.makeText(this, "Presiona devuelta para minimizar la app", Toast.LENGTH_SHORT);
+                backtoast.show();
+            }
+
     }
 
 
