@@ -67,6 +67,7 @@ public class MainActivity extends Activity {
 
 
     protected void onDestroy(){
+
         super.onDestroy();
     }
 
@@ -80,20 +81,7 @@ public class MainActivity extends Activity {
 
         if (datos != null) {
 
-
-            equipo1.setNombre(datos.getString("equipo1"));
-            equipo1.setPuntos(datos.getInt("puntos1"));
-            equipo1.setTurno(datos.getBoolean("turno1"));
-
-            equipo2.setNombre(datos.getString("equipo2"));
-            equipo2.setPuntos(datos.getInt("puntos2"));
-            equipo2.setTurno(datos.getBoolean("turno2"));
-
-            pelicula.setPelicula(datos.getString("pelicula"));
-
-            pelicula.setUltimas15(datos.getStringArrayList("ultimas15"));
-            pelicula.setPeliculaYaJugada(datos.getStringArrayList("peliculaYaJugada"));
-            pelicula.setCantidadDeVecesQuePediUnaPelicula(datos.getInt("cantidadDeVecesQuePediUnaPelicula"));
+            setearDatos(datos);
 
             boolean acerto = datos.getBoolean("acerto");
 
@@ -103,6 +91,23 @@ public class MainActivity extends Activity {
 
             cambioDeEquipo();
         }
+    }
+
+    private void setearDatos(Bundle datos) {
+
+        equipo1.setNombre(datos.getString("equipo1"));
+        equipo1.setPuntos(datos.getInt("puntos1"));
+        equipo1.setTurno(datos.getBoolean("turno1"));
+
+        equipo2.setNombre(datos.getString("equipo2"));
+        equipo2.setPuntos(datos.getInt("puntos2"));
+        equipo2.setTurno(datos.getBoolean("turno2"));
+
+        pelicula.setPelicula(datos.getString("pelicula"));
+
+        pelicula.setUltimas15(datos.getStringArrayList("ultimas15"));
+        pelicula.setPeliculaYaJugada(datos.getStringArrayList("peliculaYaJugada"));
+        pelicula.setCantidadDeVecesQuePediUnaPelicula(datos.getInt("cantidadDeVecesQuePediUnaPelicula"));
     }
 
 
@@ -231,7 +236,7 @@ public class MainActivity extends Activity {
 
 
 
-    //--------------------------------Timer----------------------------------------------
+    //--------------------------------Timmer----------------------------------------------
 
 
     public void startTimer(View view) {
@@ -313,24 +318,11 @@ public class MainActivity extends Activity {
     }
 
 
-    public void onRestoreInstanceState(Bundle estado){
+    public void onRestoreInstanceState(Bundle datos){
 
-        super.onRestoreInstanceState(estado);
+        super.onRestoreInstanceState(datos);
 
-        equipo1.setNombre(estado.getString("equipo1"));
-        equipo1.setPuntos(estado.getInt("equipo1"));
-        equipo1.setTurno(estado.getBoolean("turno1"));
-
-        equipo2.setNombre(estado.getString("equipo2"));
-        equipo2.setPuntos(estado.getInt("equipo2"));
-        equipo2.setTurno(estado.getBoolean("turno2"));
-
-        pelicula.setPelicula(estado.getString("pelicula"));
-
-        pelicula.setUltimas15(estado.getStringArrayList("ultimas15"));
-        pelicula.setPeliculaYaJugada(estado.getStringArrayList("peliculaYaJugada"));
-        pelicula.setCantidadDeVecesQuePediUnaPelicula(estado.getInt("cantidadDeVecesQuePediUnaPelicula"));
-
+        setearDatos(datos);
 
         mostrarResultado();
 
