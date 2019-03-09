@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/BackGAcertONo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backacertoono"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".AcertoONo"
+        android:paddingTop="20dp"
+        android:gravity="center_vertical|center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal|center"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            >
+            <TextView
+                android:id="@+id/textView"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/LogIn"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <android.support.v4.widget.Space
+            android:layout_width="0dp"
+            android:layout_height="50dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="70dp"
+            android:gravity="center_vertical|center"
+
+            >
+
+            <EditText
+                android:id="@+id/equipo1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:hint="Equipo 1"
+                android:inputType="text"/>
+
+            <EditText
+                android:id="@+id/equipo2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:hint="Equipo 2"
+                android:inputType="text"/>
+
+            <android.support.v4.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="30dp"/>
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/tick"
+                android:onClick="listo"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -44,6 +44,11 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Bundle datos = getIntent().getExtras();
+
+        //equipo1.setNombre(datos.getString("equipo1"));
+        //equipo2.setNombre(datos.getString("equipo2"));
+
         countDownText = findViewById(R.id.tiempo);
 
         pelicula.setPelicula("Presiona para obtener pelicula");
