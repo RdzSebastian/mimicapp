@@ -54,10 +54,10 @@ public class MainActivity extends Activity {
         customButton.setSelected(false);
         jugando=false;
 
-        selectorDeEquipo1 = findViewById(R.id.avocadoEquipo1);
+        selectorDeEquipo1 = findViewById(R.id.selectorEquipo1);
         selectorDeEquipo1.setVisibility(View.VISIBLE);
 
-        selectorDeEquipo2 = findViewById(R.id.avocadoEquipo2);
+        selectorDeEquipo2 = findViewById(R.id.selectorEquipo2);
         selectorDeEquipo2.setVisibility(View.INVISIBLE);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -182,10 +182,10 @@ public class MainActivity extends Activity {
             textEquipo1.setTypeface(null,Typeface.BOLD);
             textEquipo2.setTypeface(Typeface.SANS_SERIF);
 
-            selectorDeEquipo1 = findViewById(R.id.avocadoEquipo1);
+            selectorDeEquipo1 = findViewById(R.id.selectorEquipo1);
             selectorDeEquipo1.setVisibility(View.VISIBLE);
 
-            selectorDeEquipo2 = findViewById(R.id.avocadoEquipo2);
+            selectorDeEquipo2 = findViewById(R.id.selectorEquipo2);
             selectorDeEquipo2.setVisibility(View.INVISIBLE);
 
 
@@ -193,10 +193,10 @@ public class MainActivity extends Activity {
             textEquipo1.setTypeface(Typeface.SANS_SERIF);
             textEquipo2.setTypeface(null,Typeface.BOLD);
 
-            selectorDeEquipo1 = findViewById(R.id.avocadoEquipo1);
+            selectorDeEquipo1 = findViewById(R.id.selectorEquipo1);
             selectorDeEquipo1.setVisibility(View.INVISIBLE);
 
-            selectorDeEquipo2 = findViewById(R.id.avocadoEquipo2);
+            selectorDeEquipo2 = findViewById(R.id.selectorEquipo2);
             selectorDeEquipo2.setVisibility(View.VISIBLE);
 
 

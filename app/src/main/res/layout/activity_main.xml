@@ -16,23 +16,17 @@
 
 
     <ImageView
-        android:id="@+id/avocadoEquipo1"
-        android:layout_width="35dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/avocado"
+        android:id="@+id/selectorEquipo1"
+        android:layout_width="55dp"
+        android:layout_height="60dp"
+        android:background="@drawable/pinguin"
         android:contentDescription="@string/image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintHorizontal_bias="0.23"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.076" />
+        app:layout_constraintVertical_bias="0.113" />
 
 
     <TextView
@@ -78,23 +72,17 @@
 
 
     <ImageView
-        android:id="@+id/avocadoEquipo2"
-        android:layout_width="35dp"
+        android:id="@+id/selectorEquipo2"
+        android:layout_width="49dp"
         android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/avocado"
+        android:background="@drawable/cat"
         android:contentDescription="@string/image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintHorizontal_bias="0.249"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.217" />
+        app:layout_constraintVertical_bias="0.23" />
 
     <TextView
         android:id="@+id/Equipo2"
@@ -218,21 +206,15 @@
 
     <Button
         android:id="@+id/botonpelicula"
-        android:layout_width="70dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="86dp"
+        android:layout_height="83dp"
         android:background="@drawable/custom_buttonclip"
         android:onClick="buscarPelicula"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.149"
+        app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.88" />
+        app:layout_constraintVertical_bias="0.873" />
 
 </android.support.constraint.ConstraintLayout>
