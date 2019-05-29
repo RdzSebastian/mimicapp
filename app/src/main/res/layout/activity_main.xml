@@ -2,7 +2,6 @@
 
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true">
@@ -13,9 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/back"
-        android:contentDescription="@string/image"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="99dp" />
+        android:contentDescription="@string/image" />
 
 
     <ImageView
@@ -142,7 +139,6 @@
 
 
     <ImageView
-        android:id="@+id/unicorn"
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:layout_marginStart="16dp"
@@ -211,7 +207,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/peliculaElegida"
         android:textColor="@android:color/white"
-        android:textSize="24sp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.762"
