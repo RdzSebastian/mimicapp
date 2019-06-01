@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
     Pelicula pelicula = new Pelicula();
 
     private TextView countDownText;
-    private long timeLeftInMiliseconds = 60000; // 1min
+    private long timeLeftInMilliseconds = 60000; // 1min
     CountDownTimer countDownTimer;
 
     Button customButton;
@@ -65,16 +65,8 @@ public class MainActivity extends Activity {
         mostrarResultado();
     }
 
-    //-------------- OnDestroy (cuando cerras la app) -----------------
 
-
-    protected void onDestroy(){
-
-        super.onDestroy();
-    }
-
-
-    //-------------- OnResume (cuando vienen de otra activity -----------------
+    //-------------- OnResume (cuando vienen de otra activity) -----------------
 
     @Override
     public void onResume() {
@@ -95,6 +87,7 @@ public class MainActivity extends Activity {
         }
     }
 
+
     private void setearDatos(Bundle datos) {
 
         equipo1.setNombre(datos.getString("equipo1"));
@@ -113,27 +106,31 @@ public class MainActivity extends Activity {
     }
 
 
+    //-------------- OnDestroy (cuando cerras la app) -----------------
+
+
+    protected void onDestroy(){
+
+        super.onDestroy();
+    }
+
+    
     //------------ Va a buscar la peli al metodo de la class ----------------
 
     public void buscarPelicula(View Vista){
         try {
-            buscarPelicula();
+            pelicula.getPelicula();
             }catch (Exception e){
                 System.out.println("Error buscando pelicula");
         }
 
         while (pelicula.yaSalio()) {
-            buscarPelicula();
+            pelicula.getPelicula();
         }
 
         mostrarResultado();
     }
 
-
-    public void buscarPelicula() {
-
-        pelicula.setPelicula(pelicula.getPelicula());
-    }
 
     //---- Dependiendo la cantidad de caracteres, cambia el marginTop en la parte visual ------
 
@@ -161,8 +158,7 @@ public class MainActivity extends Activity {
         textEquipo1.setText(equipo1.getNombre());
 
         TextView textPuntos1 = findViewById(R.id.puntos1);
-        int nombrePuntos1 = equipo1.getPuntos();
-        String nombreEquipo1String = Integer.toString(nombrePuntos1);
+        String nombreEquipo1String = Integer.toString(equipo1.getPuntos());
         textPuntos1.setText(nombreEquipo1String);
 
 
@@ -170,8 +166,7 @@ public class MainActivity extends Activity {
         textEquipo2.setText(equipo2.getNombre());
 
         TextView textPuntos2 = findViewById(R.id.puntos2);
-        int nombrePuntos2 = equipo2.getPuntos();
-        String nombreEquipo2String = Integer.toString(nombrePuntos2);
+        String nombreEquipo2String = Integer.toString(equipo2.getPuntos());
         textPuntos2.setText(nombreEquipo2String);
 
 
@@ -253,17 +248,17 @@ public class MainActivity extends Activity {
                 customButton.setSelected(true);
                 jugando=true;
 
-                countDownTimer = new CountDownTimer(timeLeftInMiliseconds, 1000) {
+                countDownTimer = new CountDownTimer(timeLeftInMilliseconds, 1000) {
 
                     @Override
                     public void onTick(long millisUntilFinished) {
-                        timeLeftInMiliseconds = millisUntilFinished;
+                        timeLeftInMilliseconds = millisUntilFinished;
                         updateTimer();
                     }
 
                     @Override
                     public void onFinish() {
-                        timeLeftInMiliseconds = 60000;
+                        timeLeftInMilliseconds = 60000;
                         mp.start();
                         Acierto();
                     }
@@ -277,8 +272,8 @@ public class MainActivity extends Activity {
 
 
     public void updateTimer(){
-        int minutes = (int) timeLeftInMiliseconds / 60000;
-        int seconds = (int) timeLeftInMiliseconds % 60000/1000;
+        int minutes = (int) timeLeftInMilliseconds / 60000;
+        int seconds = (int) timeLeftInMilliseconds % 60000/1000;
 
         String timeLeftText;
 
@@ -291,10 +286,10 @@ public class MainActivity extends Activity {
     }
 
 
-    public void restartTimmer(){
+    public void restartTimer(){
         countDownTimer.cancel();
         countDownTimer = null;
-        timeLeftInMiliseconds = 60000;
+        timeLeftInMilliseconds = 60000;
         updateTimer();
 
     }
@@ -302,21 +297,21 @@ public class MainActivity extends Activity {
 
     //-------Almacena datos si doy vuelta la pantalla o si la pongo en segundo plano---------------
 
-    public void onSaveInstanceState(Bundle estado){
+    public void onSaveInstanceState(Bundle datos){
 
-        estado.putString("equipo1",equipo1.getNombre());
-        estado.putInt("equipo1",equipo1.getPuntos());
+        datos.putString("equipo1",equipo1.getNombre());
+        datos.putInt("equipo1",equipo1.getPuntos());
 
-        estado.putString("equipo2",equipo2.getNombre());
-        estado.putInt("equipo2",equipo2.getPuntos());
+        datos.putString("equipo2",equipo2.getNombre());
+        datos.putInt("equipo2",equipo2.getPuntos());
 
-        estado.putString("pelicula", pelicula.getPeliculaString());
+        datos.putString("pelicula", pelicula.getPeliculaString());
 
-        estado.putStringArrayList("ultimas15",pelicula.getUltimas15());
-        estado.putStringArrayList("peliculaYaJugada",pelicula.getPeliculaYaJugada());
-        estado.putInt("cantidadDeVecesQuePediUnaPelicula",pelicula.getCantidadDeVecesQuePediUnaPelicula());
+        datos.putStringArrayList("ultimas15",pelicula.getUltimas15());
+        datos.putStringArrayList("peliculaYaJugada",pelicula.getPeliculaYaJugada());
+        datos.putInt("cantidadDeVecesQuePediUnaPelicula",pelicula.getCantidadDeVecesQuePediUnaPelicula());
 
-        super.onSaveInstanceState(estado);
+        super.onSaveInstanceState(datos);
     }
 
 
@@ -331,13 +326,12 @@ public class MainActivity extends Activity {
     }
 
 
-
     //----------------------- Boton Stop o Termino el tiempo --------------------------------------
 
     public void Acierto() {
 
         if(countDownTimer != null) {
-            restartTimmer();
+            restartTimer();
         }
 
         Intent AcertoONo = new Intent(MainActivity.this, AcertoONo.class);
@@ -360,6 +354,8 @@ public class MainActivity extends Activity {
         startActivity(AcertoONo);
 
     }
+
+
     //----------------------- No se puede usar boton atras ----------------------
 
     public void onBackPressed() {

@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import java.util.ArrayList;
-
 public class AcertoONo extends AppCompatActivity {
 
 
@@ -86,4 +84,11 @@ public class AcertoONo extends AppCompatActivity {
         intent.putExtra("cantidadDeVecesQuePediUnaPelicula",pelicula.getCantidadDeVecesQuePediUnaPelicula());
 
     }
+
+
+    //----------------------- No se puede usar boton atras ----------------------
+
+    public void onBackPressed() {
+    }
+
 }

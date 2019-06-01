@@ -285,7 +285,7 @@ class Pelicula{
 
     //--------------------- Logica de Busqueda de peliculas ---------------------
 
-    String getPelicula() {
+    void getPelicula() {
         //System.out.println(cantidadDeVecesQuePediUnaPelicula);
         String peliculaSeleccionada = peliculaSeleccionada();
         boolean cambio;
@@ -312,11 +312,11 @@ class Pelicula{
         } else {
             ultimas15.add(peliculaSeleccionada);
         }
+        setPelicula(peliculaSeleccionada);
         //System.out.println("Pelicula nueva" + peliculaSeleccionada);
 
         cantidadDeVecesQuePediUnaPelicula++;
         //System.out.println(cantidadDeVecesQuePediUnaPelicula);
-    return peliculaSeleccionada;
     }
 
 
