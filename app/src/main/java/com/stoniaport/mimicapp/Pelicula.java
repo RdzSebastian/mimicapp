@@ -1,4 +1,4 @@
-﻿package com.stoniaport.mimicapp;
+package com.stoniaport.mimicapp;
 
 
 import java.util.ArrayList;
