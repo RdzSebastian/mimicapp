@@ -285,7 +285,7 @@ class Pelicula{
      boolean yaSalio() {
          //System.out.println("Lista de jugadas ");
         for (String check : peliculaYaJugada) {
-
+            //System.out.println(check);
             if (check.equals(pelicula)) {
                 //System.out.println("lista "+check);
                 //System.out.println("nueva= "+peliculaSeleccionada);
@@ -327,7 +327,7 @@ class Pelicula{
             ultimas15.add(peliculaSeleccionada);
         }
         setPelicula(peliculaSeleccionada);
-        //System.out.println("Pelicula nueva" + peliculaSeleccionada);
+        //System.out.println("Pelicula nueva " + peliculaSeleccionada);
 
         cantidadDeVecesQuePediUnaPelicula++;
         //System.out.println(cantidadDeVecesQuePediUnaPelicula);

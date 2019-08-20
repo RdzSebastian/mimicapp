@@ -54,7 +54,7 @@ public class AcertoONo extends AppCompatActivity {
         Intent acerto = new Intent(AcertoONo.this, MainActivity.class);
         intent(acerto);
 
-        acerto.putExtra("acerto",true);
+        acerto.putExtra("acerto",true); //solo se utiliza para que no se vuelva a repetir la pelicula
 
         startActivity(acerto);
     }
@@ -63,7 +63,7 @@ public class AcertoONo extends AppCompatActivity {
         Intent noAcerto = new Intent(AcertoONo.this, MainActivity.class);
         intent(noAcerto);
 
-        noAcerto.putExtra("acerto",false);
+        noAcerto.putExtra("acerto",true); //solo se utiliza para que no se vuelva a repetir la pelicula
 
         startActivity(noAcerto);
     }

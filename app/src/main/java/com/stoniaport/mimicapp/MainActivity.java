@@ -114,6 +114,29 @@ public class MainActivity extends Activity {
         super.onDestroy();
     }
 
+
+    //-------------- OnStop(cuando minimizas la app) -----------------
+    protected void onStop(){
+
+        Intent datos = getIntent();
+
+        datos.putExtra("equipo1",equipo1.getNombre());
+        datos.putExtra("puntos1",equipo1.getPuntos());
+        datos.putExtra("turno1",equipo1.isTurno());
+
+        datos.putExtra("equipo2",equipo2.getNombre());
+        datos.putExtra("puntos2",equipo2.getPuntos());
+        datos.putExtra("turno2",equipo2.isTurno());
+
+        datos.putExtra("pelicula", pelicula.getPeliculaString());
+
+        datos.putExtra("ultimas15",pelicula.getUltimas15());
+        datos.putExtra("peliculaYaJugada",pelicula.getPeliculaYaJugada());
+        datos.putExtra("cantidadDeVecesQuePediUnaPelicula",pelicula.getCantidadDeVecesQuePediUnaPelicula());
+
+        super.onStop();
+    }
+
     
     //------------ Va a buscar la peli al metodo de la class ----------------
 
@@ -349,7 +372,6 @@ public class MainActivity extends Activity {
         AcertoONo.putExtra("ultimas15",pelicula.getUltimas15());
         AcertoONo.putExtra("peliculaYaJugada",pelicula.getPeliculaYaJugada());
         AcertoONo.putExtra("cantidadDeVecesQuePediUnaPelicula",pelicula.getCantidadDeVecesQuePediUnaPelicula());
-
 
         startActivity(AcertoONo);
 
